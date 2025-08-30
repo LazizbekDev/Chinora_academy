@@ -87,9 +87,12 @@ const CourseContent = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto justify-items-center mb-16">
           {levels.map((level, index) => (
-            <Card key={index} className="group hover:shadow-course transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+            <Card
+              key={index}
+              className="group w-full max-w-sm bg-card text-card-foreground border border-border rounded-xl shadow-sm hover:shadow-lg hover:bg-primary/5 transition-all duration-300 transform hover:-translate-y-2"
+            >
               <CardHeader className={`${level.color} ${level.textColor} p-6`}>
                 <div className="flex items-center justify-between mb-2">
                   <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
@@ -102,24 +105,26 @@ const CourseContent = () => {
                 </div>
                 <CardTitle className="text-xl">{level.title}</CardTitle>
               </CardHeader>
-              
-              <CardContent className="p-6">
-                <div className="space-y-3">
-                  {level.modules.map((module, moduleIndex) => (
-                    <div key={moduleIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{module}</span>
-                    </div>
-                  ))}
-                </div>
+
+              <CardContent className="p-6 space-y-3">
+                {level.modules.map((module, moduleIndex) => (
+                  <div key={moduleIndex} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-foreground">{module}</span>
+                  </div>
+                ))}
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {/* Features Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto justify-items-center">
           {features.map((feature, index) => (
-            <Card key={index} className="text-center border-none bg-background shadow-course">
+            <Card
+              key={index}
+              className="w-full max-w-sm text-center bg-card text-card-foreground border border-border/40 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+            >
               <CardContent className="p-8">
                 <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                   <div className="text-primary">{feature.icon}</div>
