@@ -1,19 +1,19 @@
-import { Config } from "tailwindcss";
-
+/** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  // content kerak emas, vite plugin o'zi handle qiladi
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  prefix: "",
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
         "2xl": "1400px",
       },
     },
     extend: {
+      fontFamily: {
+        tarsk: ["tarsk", "Inter", "sans-serif"], // Added fallback fonts
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -24,7 +24,6 @@ export default {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           light: "hsl(var(--primary-light))",
-          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -58,36 +57,21 @@ export default {
           intermediate: "hsl(var(--level-intermediate))",
           advanced: "hsl(var(--level-advanced))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0.75rem", // Slightly larger for modern look
+        md: "0.5rem",
+        sm: "0.25rem",
       },
       backgroundImage: {
-        "gradient-hero": "var(--gradient-hero)",
-        "gradient-cta": "var(--gradient-cta)",
-        "gradient-blue-pill": "var(--gradient-blue-pill)",
-        "gradient-section": "var(--gradient-section)",
+        "gradient-section": "linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%)",
       },
       boxShadow: {
-        course: "var(--shadow-course)",
-        cta: "var(--shadow-cta)",
-        glow: "var(--shadow-glow)",
+        sm: "0 2px 8px hsl(0 0% 0% / 0.1)", // Subtle shadow for flat design
+        md: "0 4px 12px hsl(0 0% 0% / 0.15)",
       },
       transitionTimingFunction: {
-        smooth: "var(--transition-smooth)",
-        bounce: "var(--transition-bounce)",
+        smooth: "cubic-bezier(0.4, 0, 0.2, 1)",
       },
       keyframes: {
         "accordion-down": {

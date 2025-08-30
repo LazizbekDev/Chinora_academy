@@ -6,14 +6,20 @@ import PricingSection from "@/components/PricingSection";
 import MatrixChoice from "@/components/MatrixChoice";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+// import Header from "../components/Header";
 // import LandingPage from "../components/LandingPage";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
-        {/* <LandingPage /> */}
+      {/* <LandingPage /> */}
+      {/* <Header /> */}
+      <Navbar />
       <HeroSection />
-      <WhoIsThisFor />
+      <div className="overflow-x-hidden">
+        <WhoIsThisFor />
+      </div>
       <AboutInstructor />
       <CourseContent />
       <PricingSection />
