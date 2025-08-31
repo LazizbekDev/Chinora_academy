@@ -3,37 +3,17 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const FAQ = () => {
   const faqs = [
     {
-      question: "Darslar qancha vaqt davom etadi?",
-      answer: "Har bir video dars 15-30 daqiqa davom etadi. Siz o'z vaqtingizga mos holda o'rganishingiz mumkin. Haftada kamida 3-4 soat ajrating va natijani ko'rasiz."
+      question: "Kurs faqat boshlovchilar uchunmi?",
+      answer: "Yo‘q, kursimiz har bir darajadagi o‘quvchilar uchun mo‘ljallangan. Siz 0 dan boshlaysiz va malaka oshirishgacha yetib borasiz. Har bir bosqichda sizga yordam beramiz."
     },
     {
-      question: "Qanday daraja talab qilinadi?",
-      answer: "Beginner kurs uchun hech qanday oldindan bilim talab qilinmaydi. Elementary→Intermediate uchun asosiy grammatika bilimi, Intermediate→Advanced uchun o'rta daraja kerak."
+      question: "Videodarslarni qayerdan ko‘raman?",
+      answer: "Videodarslarni Telegram va yopiq platformamiz orqali tomosha qilasiz. Istalgan vaqtda ko‘rib, qayta mashq qilishingiz mumkin. Siz uchun qulaylik yaratilgan."
     },
     {
-      question: "Pul qaytarish kafolati qanday ishlaydi?",
-      answer: "Agar birinchi 2 hafta ichida kurs sizga yoqmasa yoki natija ko'rmasangiz, 100% pul qaytarib beramiz. Hech qanday savol bermaydi."
+      question: "To‘lov bo‘lib-bo‘lib qilsam bo‘ladimi?",
+      answer: "Albatta, admin bilan bog‘lanib bo‘lib-bo‘lib to‘lash shartlarini olishingiz mumkin. Sizga mos va qulay variantlarni taklif qilamiz."
     },
-    {
-      question: "Mobil qurilmalarda ishlaydimi?",
-      answer: "Ha! Kurs barcha qurilmalarda ishlaydi - telefon, planshet, kompyuter. Internetingiz bo'lsa, istalgan joyda o'rganishingiz mumkin."
-    },
-    {
-      question: "Qancha tez natija kutishim mumkin?",
-      answer: "Beginner darajasida 4 haftada oddiy gaplashishni boshlayz. Intermediate darajasida 6 haftada ishda foydalanishingiz mumkin. Advanced darajasida 8 haftada professional darajaga yetasiz."
-    },
-    {
-      question: "Sertifikat berilarmidi?",
-      answer: "Ha! Har bir kursni muvaffaqiyatli tugatganingizda rasmiy sertifikat olasiz. Bu sertifikat sizning CV va LinkedIn profilingizga qo'shishingiz mumkin."
-    },
-    {
-      question: "Qo'shimcha to'lovlar bormi?",
-      answer: "Yo'q! Bir martalik to'lov qilganingizdan so'ng barcha materiallar, bonuslar va qo'llab-quvvatlash bepul. Hech qanday yashirin to'lov yo'q."
-    },
-    {
-      question: "Mentor yordami bormi?",
-      answer: "Ha! Elementary va Advanced kurslarda shaxsiy mentor tayinlanadi. Telegram guruhda 24/7 qo'llab-quvvatlash va haftalik speaking club."
-    }
   ];
 
   return (
@@ -51,8 +31,8 @@ const FAQ = () => {
         <div className="max-w-8xl mx-auto">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
+              <AccordionItem
+                key={index}
                 value={`item-${index}`}
                 className="border-t transition-all duration-300"
               >
@@ -72,15 +52,15 @@ const FAQ = () => {
             Boshqa savollaringiz bormi?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <a 
-              href="https://t.me/jacobenglish_support" 
+            <a
+              href="https://t.me/jacobenglish_support"
               className="text-primary hover:text-primary-light transition-colors"
             >
               📱 Telegram orqali yozing
             </a>
             <span className="hidden sm:block text-muted-foreground">•</span>
-            <a 
-              href="tel:+998901234567" 
+            <a
+              href="tel:+998901234567"
               className="text-primary hover:text-primary-light transition-colors"
             >
               📞 Qo'ng'iroq qiling

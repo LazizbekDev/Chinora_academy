@@ -15,14 +15,20 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
-        isScrolled ? 'bg-gradient-to-b from-[#962527] to-[#962527]' : 'bg-gradient-to-b from-[#962527]/70 to-transparent'
-      }`}
+      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-gradient-to-b from-[#962527] to-[#962527]' : 'bg-gradient-to-b from-[#962527]/70 to-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-14 items-center">
           {/* Logo */}
-          <span className="text-white text-2xl font-bold">Jcb.English</span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-white text-xl font-bold tracking-wide">
+              CHINORA
+            </span>
+            <span className="text-white text-sm font-medium tracking-wider">
+              FASHION ACADEMY
+            </span>
+          </div>
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center space-x-8">
@@ -40,14 +46,12 @@ const Navbar = () => {
               <div className="flex items-center space-x-2">
                 <span className="flex items-center space-x-1">
                   <span
-                    className={`w-3 h-3 rounded-full ${
-                      isScrolled ? "bg-white" : "bg-[#962527]"
-                    }`}
+                    className={`w-3 h-3 rounded-full ${isScrolled ? "bg-white" : "bg-[#962527]"
+                      }`}
                   />
                   <span
-                    className={`${
-                      isScrolled ? "text-white" : "text-black"
-                    } font-semibold`}
+                    className={`${isScrolled ? "text-white" : "text-black"
+                      } font-semibold`}
                   >
                     Start
                   </span>

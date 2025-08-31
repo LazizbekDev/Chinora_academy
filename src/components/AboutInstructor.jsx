@@ -1,107 +1,176 @@
+import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Award, Users, Globe } from "lucide-react";
+import { CheckCircle, Award, Users, Globe, GraduationCap, Briefcase } from "lucide-react";
 import instructorImage from "@/assets/jacob-instructor.jpg";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutInstructor = () => {
+  const sectionRef = useRef(null);
+
   const achievements = [
-    {
-      icon: <Users className="w-5 h-5" />,
-      text: "1700+ muvaffaqiyatli o'quvchi",
-    },
-    {
-      icon: <Globe className="w-5 h-5" />,
-      text: "8 yillik xalqaro tajriba",
-    },
-    {
-      icon: <Award className="w-5 h-5" />,
-      text: "TESOL sertifikati",
-    },
-    {
-      icon: <CheckCircle className="w-5 h-5" />,
-      text: "95% o'quvchilar muvaffaqiyat ko'rsatkichi",
-    },
+    { icon: <Users className="w-5 h-5" />, text: "500+ muvaffaqiyatli shogird" },
+    { icon: <Globe className="w-5 h-5" />, text: "20+ yillik tajriba" },
+    { icon: <Award className="w-5 h-5" />, text: "Xalqaro tanlov g'olibi" },
+    { icon: <CheckCircle className="w-5 h-5" />, text: "98% muvaffaqiyat darajasi" },
+    { icon: <GraduationCap className="w-5 h-5" />, text: "Mualliflik metodikasi" },
+    { icon: <Briefcase className="w-5 h-5" />, text: "Muvaffaqiyatli brendlar" },
   ];
 
   const stats = [
-    { number: "350,000+", label: "Instagram izdoshlari" },
-    { number: "50,000+", label: "YouTube obunachilar" },
-    { number: "25,000+", label: "Telegram a'zolar" },
+    { number: "200,000+", label: "Instagram izdoshlari" },
+    { number: "100,000+", label: "YouTube obunachilar" },
+    { number: "30,000+", label: "Telegram a'zolar" },
     { number: "100%", label: "Natija kafolati" },
+    { number: "15+", label: "Master-klasslar" },
+    { number: "50+", label: "Moda loyihalari" },
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Instructor image
+      gsap.from(".instructor-image", {
+        x: -50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".instructor-image",
+          start: "top 80%",
+        },
+      });
+
+      // Heading
+      gsap.from(".instructor-heading", {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".instructor-heading",
+          start: "top 85%",
+        },
+      });
+
+      // Achievements
+      gsap.from(".achievement-item", {
+        y: 30,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".achievement-item",
+          start: "top 90%",
+        },
+      });
+
+      // Stats
+      gsap.from(".stats-card", {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".stats-card",
+          start: "top 85%",
+        },
+      });
+
+      // Badges
+      gsap.from(".badge-item", {
+        opacity: 0,
+        scale: 0.8,
+        stagger: 0.1,
+        duration: 0.4,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: ".badge-item",
+          start: "top 95%",
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="about" className="pb-20 bg-background">
+    <section ref={sectionRef} id="about" className="py-20 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Sizning ustoz <span className="text-primary">Mr. Jacob</span>
+          {/* Title */}
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground instructor-heading">
+              Kurs asoschisi <span className="text-primary">Ibodullayeva Chinora</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              8 yillik xalqaro tajriba va minglab muvaffaqiyatli o'quvchilar bilan isbotlangan metodika
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              20 yildan ortiq tajribaga ega tikuvchilik va dizaynerlik ustozasi.
+              O‘zining noyob metodikasi va Müller andazalari orqali yuzlab
+              shogirdlarni moda sanoatida muvaffaqiyatga yetaklagan.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-course">
-                <img 
-                  src={instructorImage} 
-                  alt="Mr. Jacob - English Instructor"
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Image */}
+            <div className="relative instructor-image">
+              <div className="relative rounded-2xl overflow-hidden">
+                <img
+                  src={instructorImage}
+                  alt="Ibodullayeva Chinora"
                   className="w-full h-auto object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
               </div>
-              
               <div className="absolute -bottom-6 -right-6 bg-accent-red text-accent-red-foreground p-4 rounded-full shadow-cta">
                 <Award className="w-8 h-8" />
               </div>
             </div>
 
+            {/* Content */}
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold mb-4 text-foreground">
-                  Professional ingliz tili o'qituvchisi
+                  Professional tikuvchilik va dizaynerlik ustozasi
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Xalqaro kompaniyalarda 8 yil ishlagan, TESOL sertifikatiga ega Mr. Jacob 
-                  sizga nafaqat grammatika va lug'at, balki real hayotda qo'llaniladigan 
-                  ingliz tilini o'rgatadi.
+                  Chinora opa tikuvchilikdan tashqari professional tafakkur va
+                  bozor strategiyalarini o‘rgatadi. Uning metodikasi shogirdlarga
+                  o‘z moda brendlarini yaratish va xalqaro bozorda raqobatlashish
+                  imkonini beradi.
                 </p>
-                
-                <div className="space-y-3">
+
+                {/* Achievements */}
+                <div className="flex flex-wrap gap-4">
                   {achievements.map((achievement, index) => (
-                    <div key={index} className="flex items-center gap-3">
+                    <div key={index} className="flex items-center gap-3 w-[48%] achievement-item">
                       <div className="text-primary">{achievement.icon}</div>
-                      <span className="text-foreground font-medium">{achievement.text}</span>
+                      <span className="text-foreground font-medium text-sm">
+                        {achievement.text}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <Card className="bg-gradient-section border-none">
+              {/* Stats */}
+              <Card className="border-t border-border pt-6 stats-card bg-gradient-section">
                 <CardContent className="p-6">
                   <h4 className="text-lg font-bold mb-4 text-foreground text-center">
                     Ijtimoiy tarmoqlarda faol
                   </h4>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-x-12">
                     {stats.map((stat, index) => (
                       <div key={index} className="text-center">
-                        <div className="text-2xl font-bold text-primary">{stat.number}</div>
+                        <div className="text-xl font-bold text-primary">{stat.number}</div>
                         <div className="text-sm text-muted-foreground">{stat.label}</div>
                       </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
-
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary" className="px-3 py-1">Business English</Badge>
-                <Badge variant="secondary" className="px-3 py-1">IELTS Preparation</Badge>
-                <Badge variant="secondary" className="px-3 py-1">Conversational Practice</Badge>
-                <Badge variant="secondary" className="px-3 py-1">Grammar Mastery</Badge>
-              </div>
             </div>
           </div>
         </div>

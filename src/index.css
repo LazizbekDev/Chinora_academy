@@ -10,99 +10,160 @@
 }
 
 .header-background {
-  background: #962527; /* default: mobile - full red */
+  background: #962527;
+  /* default: mobile - full red */
   position: relative;
   overflow: hidden;
 }
 
-@media (min-width: 768px) { /* md breakpoint */
+@media (min-width: 768px) {
   .header-background {
-    background: linear-gradient(to right, #962527 75%, #F3F0E8 75%);
+    background:
+      linear-gradient(to right, #962527 75%, transparent 75%),
+      url("/images/sewing-illustration.jpg") no-repeat center;
+    background-size: auto 45%, cover;
+    /* rasm balandligini 80% qilib, kengroq ko‘rinadi */
+    background-position: right center;
+    /* biroz markazga tortamiz */
   }
+
+  .header-background::before {
+    width: 75% !important;
+  }
+
 }
 
 .header-background::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     linear-gradient(90deg, #912426 2px, transparent 2px),
     linear-gradient(0deg, #912426 2px, transparent 2px);
   background-size: 55px 55px;
   background-position: 0 0;
-  width: 75%; /* Limit the tile pattern to 75% of the width */
+  width: 100%;
+  /* Limit the tile pattern to 75% of the width */
   z-index: 0;
 }
 
 @layer base {
   :root {
-    --background: 0 0% 93.7%; /* #EFEFEF */
+    --background: 0 0% 93.7%;
+    /* #EFEFEF */
     --foreground: 0 0% 10%;
 
-    --card: 0 0% 93.7%; /* #EFEFEF */
-    --card-foreground: 0 0% 3.6%; /* #090909 */
+    --card: 0 0% 93.7%;
+    /* #EFEFEF */
+    --card-foreground: 0 0% 3.6%;
+    /* #090909 */
 
-    --popover: 0 0% 93.7%; /* #EFEFEF */
-    --popover-foreground: 0 0% 3.6%; /* #090909 */
+    --popover: 0 0% 93.7%;
+    /* #EFEFEF */
+    --popover-foreground: 0 0% 3.6%;
+    /* #090909 */
 
-    --primary: 358 65% 35%; /* #962527 */
-    --primary-foreground: 0 0% 100%; /* #FFFFFF */
-    --primary-light: 358 65% 45%; /* Lighter shade of #962527 */
+    --primary: 358 65% 35%;
+    /* #962527 */
+    --primary-foreground: 0 0% 100%;
+    /* #FFFFFF */
+    --primary-light: 358 65% 45%;
+    /* Lighter shade of #962527 */
 
-    --secondary: 0 0% 95%; /* Default secondary, adjust if needed */
-    --secondary-foreground: 0 0% 3.6%; /* #090909 */
-    --muted: 0 0% 90%; /* Default muted, adjust if needed */
-    --muted-foreground: 0 0% 40%; /* Default muted foreground, adjust if needed */
-    --accent: 0 0% 95%; /* Default accent, adjust if needed */
-    --accent-foreground: 0 0% 3.6%; /* #090909 */
-    --accent-red: 358 65% 35%; /* #962527 */
-    --accent-red-foreground: 0 0% 100%; /* #FFFFFF */
-    --accent-red-light: 358 65% 45%; /* Lighter shade of #962527 */
+    --secondary: 0 0% 95%;
+    /* Default secondary, adjust if needed */
+    --secondary-foreground: 0 0% 3.6%;
+    /* #090909 */
+    --muted: 0 0% 90%;
+    /* Default muted, adjust if needed */
+    --muted-foreground: 0 0% 40%;
+    /* Default muted foreground, adjust if needed */
+    --accent: 0 0% 95%;
+    /* Default accent, adjust if needed */
+    --accent-foreground: 0 0% 3.6%;
+    /* #090909 */
+    --accent-red: 358 65% 35%;
+    /* #962527 */
+    --accent-red-foreground: 0 0% 100%;
+    /* #FFFFFF */
+    --accent-red-light: 358 65% 45%;
+    /* Lighter shade of #962527 */
 
-    --destructive: 0 70% 50%; /* Default destructive, adjust if needed */
-    --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+    --destructive: 0 70% 50%;
+    /* Default destructive, adjust if needed */
+    --destructive-foreground: 0 0% 100%;
+    /* #FFFFFF */
 
-    --border: 0 0% 85%; /* Default border, adjust if needed */
-    --input: 0 0% 85%; /* Default input, adjust if needed */
-    --ring: 358 65% 35%; /* #962527 */
+    --border: 0 0% 85%;
+    /* Default border, adjust if needed */
+    --input: 0 0% 85%;
+    /* Default input, adjust if needed */
+    --ring: 358 65% 35%;
+    /* #962527 */
 
-    --level-beginner: 120 60% 50%; /* Green for beginner */
-    --level-intermediate: 220 60% 50%; /* Blue for intermediate */
-    --level-advanced: 0 80% 50%; /* Red for advanced */
+    --level-beginner: 120 60% 50%;
+    /* Green for beginner */
+    --level-intermediate: 220 60% 50%;
+    /* Blue for intermediate */
+    --level-advanced: 0 80% 50%;
+    /* Red for advanced */
 
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 0 0% 8%; /* Dark background */
-    --foreground: 0 0% 95%; /* Light foreground for dark mode */
+    --background: 0 0% 8%;
+    /* Dark background */
+    --foreground: 0 0% 95%;
+    /* Light foreground for dark mode */
 
-    --card: 0 0% 12%; /* Dark card */
-    --card-foreground: 0 0% 95%; /* Light text for dark card */
+    --card: 0 0% 12%;
+    /* Dark card */
+    --card-foreground: 0 0% 95%;
+    /* Light text for dark card */
 
-    --popover: 0 0% 12%; /* Dark popover */
-    --popover-foreground: 0 0% 95%; /* Light text for popover */
+    --popover: 0 0% 12%;
+    /* Dark popover */
+    --popover-foreground: 0 0% 95%;
+    /* Light text for popover */
 
-    --primary: 358 65% 40%; /* Slightly lighter red for dark mode */
-    --primary-foreground: 0 0% 100%; /* #FFFFFF */
-    --primary-light: 358 65% 50%; /* Lighter shade for dark mode */
+    --primary: 358 65% 40%;
+    /* Slightly lighter red for dark mode */
+    --primary-foreground: 0 0% 100%;
+    /* #FFFFFF */
+    --primary-light: 358 65% 50%;
+    /* Lighter shade for dark mode */
 
-    --secondary: 0 0% 18%; /* Dark secondary */
-    --secondary-foreground: 0 0% 95%; /* Light text */
-    --muted: 0 0% 22%; /* Dark muted */
-    --muted-foreground: 0 0% 65%; /* Lighter muted text */
-    --accent: 0 0% 18%; /* Dark accent */
-    --accent-foreground: 0 0% 95%; /* Light text */
-    --accent-red: 358 65% 40%; /* #962527 adjusted for dark */
-    --accent-red-foreground: 0 0% 100%; /* #FFFFFF */
-    --accent-red-light: 358 65% 50%; /* Lighter shade */
+    --secondary: 0 0% 18%;
+    /* Dark secondary */
+    --secondary-foreground: 0 0% 95%;
+    /* Light text */
+    --muted: 0 0% 22%;
+    /* Dark muted */
+    --muted-foreground: 0 0% 65%;
+    /* Lighter muted text */
+    --accent: 0 0% 18%;
+    /* Dark accent */
+    --accent-foreground: 0 0% 95%;
+    /* Light text */
+    --accent-red: 358 65% 40%;
+    /* #962527 adjusted for dark */
+    --accent-red-foreground: 0 0% 100%;
+    /* #FFFFFF */
+    --accent-red-light: 358 65% 50%;
+    /* Lighter shade */
 
-    --destructive: 0 65% 45%; /* Dark destructive */
-    --destructive-foreground: 0 0% 95%; /* Light text */
+    --destructive: 0 65% 45%;
+    /* Dark destructive */
+    --destructive-foreground: 0 0% 95%;
+    /* Light text */
 
-    --border: 0 0% 25%; /* Dark border */
-    --input: 0 0% 25%; /* Dark input */
-    --ring: 358 65% 40%; /* #962527 for dark mode */
+    --border: 0 0% 25%;
+    /* Dark border */
+    --input: 0 0% 25%;
+    /* Dark input */
+    --ring: 358 65% 40%;
+    /* #962527 for dark mode */
   }
 }
 
@@ -114,6 +175,7 @@
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    font-family: "tarsk", "Inter", sans-serif; /* Added fallback */
+    font-family: "tarsk", "Inter", sans-serif;
+    /* Added fallback */
   }
 }

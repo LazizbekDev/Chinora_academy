@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Briefcase, GraduationCap, MapPin, Building, Heart } from "lucide-react";
+import { Users,  Heart, PenTool, SwatchBook, Scissors, Banknote } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,12 +11,12 @@ const WhoIsThisFor = () => {
   const scrollRef = useRef(null);
 
   const targetAudience = [
-    { icon: <Briefcase className="w-8 h-8 text-primary" />, title: "Chet davlatlariga sayohat qiladiganlar uchun", description: "Xalqaro kompaniyalarda ishlash, portfolio ko'rsatish va professional muloqot uchun" },
-    { icon: <GraduationCap className="w-8 h-8 text-level-intermediate" />, title: "Oʻz ingliz tili darajasini yaxshilamoqchi boʻlganlar uchun", description: "IELTS, TOEFL tayyorlash, xorijda ta'lim olish va stipendiya yutish uchun" },
-    { icon: <MapPin className="w-8 h-8 text-accent-red" />, title: "Ingliz tili oʻrganishni boshlamoqchilarga", description: "Dunyoni aylanish, boshqa madaniyatlar bilan tanishish va erkin muloqot uchun" },
-    { icon: <Building className="w-8 h-8 text-primary-light" />, title: "Yollanma xodimlar, mutaxassislar va ekspertlar uchun", description: "Xalqaro biznes, hamkorlik va investitsiya imkoniyatlarini kengaytirish uchun" },
-    { icon: <Users className="w-8 h-8 text-level-beginner" />, title: "Ingliz tilini yaxshi biladigan, lekin talaffuzni yaxshilab, Advanced darajagacha chiqmoqchi boʻlganlar uchun", description: "Farzandlarga yordam berish, oilaviy sayohatlar va madaniy boyitish uchun" },
-    { icon: <Heart className="w-8 h-8 text-level-advanced" />, title: "Talabalar va abituriyentlarga", description: "O'z-o'zini takomillashtirish, yangi imkoniyatlar ochish va intellektual o'sish uchun" },
+    { icon: <PenTool className="w-6 h-6 text-primary" />, title: "Tikuvchilikni 0 dan o‘rganishni xohlaydiganlar uchun", description: "Asosiy bilimlardan boshlab, mustaqil tikuvchi bo‘lishgacha hammasi bir joyda." },
+    { icon: <Scissors className="w-6 h-6 text-primary" />, title: "Malakasini oshirmoqchi bo‘lgan tikuvchilar uchun", description: "Zamonaviy usullar, yangi texnikalar va professional rivojlanish imkoniyati." },
+    { icon: <SwatchBook className="w-6 h-6 text-primary" />, title: "Dizaynerlikka qiziqadiganlar uchun", description: "Kreativ fikrlash, dizayn asoslari va amaliy mashg‘ulotlar orqali professional darajaga chiqish." },
+    { icon: <Banknote className="w-6 h-6 text-primary" />, title: "Tikuvchilik orqali daromad qilishni maqsad qilganlar uchun", description: "Bozorda o‘z o‘rnini topish, mijozlar bilan ishlash va biznes yuritish ko‘nikmalari." },
+    { icon: <Users className="w-6 h-6 text-primary" />, title: "O‘zini zamonaviy va talabgir mutaxassis sifatida ko‘rishni istaganlar uchun", description: "Qisqasi, bu kurs sizni shunchaki 'tikuvchi' emas, balki yuqori daromadli mutaxassis darajasiga olib chiqadi." },
+    { icon: <Heart className="w-6 h-6 text-primary" />, title: "O‘z hayotini o‘zgartirishni istagan har bir kishi uchun", description: "Yangi imkoniyatlar, kasbiy o‘sish va shaxsiy rivojlanish sari birinchi qadam." },
   ];
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const WhoIsThisFor = () => {
           Bu kurs <span className="text-primary">kimlar uchun?</span>
         </h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-          Ingliz tilini o'rganishda maqsadi aniq bo'lgan har bir kishi uchun maxsus tuzilgan dastur
+          <span className="text-primary">CHINORA FASHION ACADEMY</span> kursi sizni shunchaki “tikuvchi” emas, balki yuqori daromadli mutaxassis darajasiga olib chiqadi.
         </p>
       </div>
 
@@ -82,7 +82,7 @@ const WhoIsThisFor = () => {
               <CardContent className="flex flex-col justify-between h-full p-0 pb-2">
                 <div className="space-y-4">
                   <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center ml-4 mt-4">
-                    <Users className="w-6 h-6 text-primary" />
+                    {item.icon}
                   </div>
                   <div className="pl-4">
                     <h3 className="text-xl font-bold text-foreground font-tarsk leading-tight">{item.title}</h3>
