@@ -17,7 +17,7 @@ const Index = () => {
       {/* <Header /> */}
       <Navbar />
       <HeroSection />
-      <div className="overflow-x-hidden">
+      <div className="overflow-hidden">
         <WhoIsThisFor />
       </div>
       <AboutInstructor />

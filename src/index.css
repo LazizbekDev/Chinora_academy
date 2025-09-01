@@ -10,8 +10,7 @@
 }
 
 .header-background {
-  background: #962527;
-  /* default: mobile - full red */
+  background: #EADBCF; /* default: mobile - full brand color */
   position: relative;
   overflow: hidden;
 }
@@ -19,18 +18,16 @@
 @media (min-width: 768px) {
   .header-background {
     background:
-      linear-gradient(to right, #962527 75%, transparent 75%),
+      linear-gradient(to right, #EADBCF 75%, transparent 75%),
       url("/images/sewing-illustration.jpg") no-repeat center;
-    background-size: auto 45%, cover;
-    /* rasm balandligini 80% qilib, kengroq ko‘rinadi */
+    background-size: auto 80%, cover;
+    /* rasm balandligini 80% qilib, yanada kengroq ko‘rinadi */
     background-position: right center;
-    /* biroz markazga tortamiz */
   }
 
   .header-background::before {
     width: 75% !important;
   }
-
 }
 
 .header-background::before {
@@ -38,20 +35,21 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(90deg, #912426 2px, transparent 2px),
-    linear-gradient(0deg, #912426 2px, transparent 2px);
+    linear-gradient(90deg, #e7d7c9 2px, transparent 2px),
+    linear-gradient(0deg, #e7d7c9 2px, transparent 2px);
   background-size: 55px 55px;
   background-position: 0 0;
   width: 100%;
-  /* Limit the tile pattern to 75% of the width */
   z-index: 0;
 }
 
+
 @layer base {
   :root {
-    --background: 0 0% 93.7%;
-    /* #EFEFEF */
-    --foreground: 0 0% 10%;
+    --background: 30 60% 97%;
+    /* #FDF8F2 */
+    --foreground: 330 20% 15%;
+    /* Dark plum text (#2A0E17 yaqin) */
 
     --card: 0 0% 93.7%;
     /* #EFEFEF */
@@ -63,50 +61,49 @@
     --popover-foreground: 0 0% 3.6%;
     /* #090909 */
 
-    --primary: 358 65% 35%;
-    /* #962527 */
+    --primary: 330 45% 34%;
+    /* #882F50 */
     --primary-foreground: 0 0% 100%;
-    /* #FFFFFF */
-    --primary-light: 358 65% 45%;
-    /* Lighter shade of #962527 */
+    /* White text */
 
-    --secondary: 0 0% 95%;
-    /* Default secondary, adjust if needed */
-    --secondary-foreground: 0 0% 3.6%;
-    /* #090909 */
-    --muted: 0 0% 90%;
-    /* Default muted, adjust if needed */
+    --primary-light: 330 45% 44%;
+    /* A bit lighter shade for hover (#A2446D) */
+
+    --secondary: 33 30% 85%;
+    /* #EADBCF - beige/goldish secondary bg */
+    --secondary-foreground: 330 25% 20%;
+    /* Dark text */
+
+    --muted: 30 30% 90%;
+    /* Soft beige-gray */
+    --muted-foreground: 330 20% 40%;
     --muted-foreground: 0 0% 40%;
     /* Default muted foreground, adjust if needed */
-    --accent: 0 0% 95%;
-    /* Default accent, adjust if needed */
-    --accent-foreground: 0 0% 3.6%;
-    /* #090909 */
-    --accent-red: 358 65% 35%;
-    /* #962527 */
+    --accent: 33 25% 95%;
+    /* Cream accent */
+    --accent-foreground: 330 25% 20%;
+
+    --accent-red: 330 45% 34%;
+    /* Same as primary for consistency */
+    --accent-red-light: 330 45% 44%;
     --accent-red-foreground: 0 0% 100%;
     /* #FFFFFF */
-    --accent-red-light: 358 65% 45%;
-    /* Lighter shade of #962527 */
 
-    --destructive: 0 70% 50%;
-    /* Default destructive, adjust if needed */
+    --destructive: 0 75% 45%;
+    /* red warning (unchanged) */
     --destructive-foreground: 0 0% 100%;
-    /* #FFFFFF */
 
-    --border: 0 0% 85%;
-    /* Default border, adjust if needed */
-    --input: 0 0% 85%;
-    /* Default input, adjust if needed */
-    --ring: 358 65% 35%;
-    /* #962527 */
+    --border: 33 30% 85%;
+    --input: 33 30% 85%;
+    --ring: 330 45% 34%;
+    /* matches primary */
 
-    --level-beginner: 120 60% 50%;
-    /* Green for beginner */
-    --level-intermediate: 220 60% 50%;
-    /* Blue for intermediate */
-    --level-advanced: 0 80% 50%;
-    /* Red for advanced */
+    --level-beginner: 120 50% 45%;
+    /* green */
+    --level-intermediate: 220 50% 50%;
+    /* blue */
+    --level-advanced: 330 60% 40%;
+    /* burgundy */
 
     --radius: 0.75rem;
   }

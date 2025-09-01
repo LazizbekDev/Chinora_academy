@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Logo from '@/assets/flag.svg?react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,48 +16,51 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-gradient-to-b from-[#962527] to-[#962527]' : 'bg-gradient-to-b from-[#962527]/70 to-transparent'
-        }`}
+      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
+        isScrolled
+          ? "bg-primary shadow-md"
+          : "bg-gradient-to-b from-[#EADBCF]/80 to-transparent"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-14 items-center">
           {/* Logo */}
           <div className="flex flex-col leading-tight">
-            <span className="text-white text-xl font-bold tracking-wide">
-              CHINORA
-            </span>
-            <span className="text-white text-sm font-medium tracking-wider">
-              FASHION ACADEMY
-            </span>
+            <Logo className="color-red" />
           </div>
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center space-x-8">
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Kim uchun</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Metodning avtori</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Programma</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Narxi</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Ko'p savollar</a>
+            {["Kim uchun", "Metodning avtori", "Programma", "Narxi", "Ko'p savollar"].map((link, i) => (
+              <a
+                key={i}
+                href="#"
+                className={`hover:text-[#C7A27C] transition-colors ${
+                  isScrolled ? "text-[hsl(var(--secondary))]" : "text-[hsl(var(--secondary-foreground))]"
+                }`}
+              >
+                {link}
+              </a>
+            ))}
 
             {/* START DATE badge */}
-            <a
-              href="#"
-              className="flex items-center space-x-2 px-3 py-1 rounded-md transition-colors"
-            >
+            <a href="#" className="flex items-center space-x-2 px-3 py-1 rounded-md">
               <div className="flex items-center space-x-2">
                 <span className="flex items-center space-x-1">
                   <span
-                    className={`w-3 h-3 rounded-full ${isScrolled ? "bg-white" : "bg-[#962527]"
-                      }`}
+                    className={`w-3 h-3 rounded-full ${
+                      isScrolled ? "bg-secondary" : "bg-primary"
+                    }`}
                   />
                   <span
-                    className={`${isScrolled ? "text-white" : "text-black"
-                      } font-semibold`}
+                    className={`font-semibold ${
+                      isScrolled ? "text-secondary" : "text-[hsl(var(--secondary-foreground))]"
+                    }`}
                   >
                     Start
                   </span>
                 </span>
-                <span className="text-white font-medium">1 July</span>
+                <span className="text-[#C7A27C] font-medium">1 July</span>
               </div>
             </a>
           </div>
@@ -65,7 +69,9 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(true)}
-              className="text-white focus:outline-none"
+              className={`focus:outline-none ${
+                isScrolled ? "text-[#090909]" : "text-[hsl(var(--secondary-foreground))]"
+              }`}
             >
               <Menu size={32} />
             </button>
@@ -75,36 +81,41 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full bg-black text-white transform transition-all duration-300 ease-in-out 
-          ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'} 
+        className={`fixed top-0 right-0 h-screen w-full bg-[#EADBCF] text-[hsl(var(--secondary-foreground))] transform transition-all duration-300 ease-in-out 
+          ${isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"} 
         `}
       >
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute top-4 right-4 text-white"
+          className="absolute top-4 right-4 text-[hsl(var(--secondary-foreground))]"
         >
           <X size={32} />
         </button>
 
         <div className="mt-20 space-y-6 px-6 text-lg">
-          <a href="#" className="block hover:text-gray-300 transition-colors" onClick={() => setIsOpen(false)}>Kim uchun</a>
-          <a href="#" className="block hover:text-gray-300 transition-colors" onClick={() => setIsOpen(false)}>Metodning avtori</a>
-          <a href="#" className="block hover:text-gray-300 transition-colors" onClick={() => setIsOpen(false)}>Programma</a>
-          <a href="#" className="block hover:text-gray-300 transition-colors" onClick={() => setIsOpen(false)}>Narxi</a>
-          <a href="#" className="block hover:text-gray-300 transition-colors" onClick={() => setIsOpen(false)}>Ko'p savollar</a>
+          {["Kim uchun", "Metodning avtori", "Programma", "Narxi", "Ko'p savollar"].map((link, i) => (
+            <a
+              key={i}
+              href="#"
+              className="block hover:text-[#C7A27C] transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              {link}
+            </a>
+          ))}
 
           {/* Start date mobile */}
-          <div className="pt-4 border-t border-gray-700 mt-6">
+          <div className="pt-4 border-t border-[#C7A27C]/30 mt-6">
             <span className="flex items-center space-x-2">
-              <span className="w-3 h-3 rounded-full bg-red-600" />
+              <span className="w-3 h-3 rounded-full bg-[#C7A27C]" />
               <span className="font-semibold">Start</span>
-              <span className="text-gray-300">1 July</span>
+              <span className="text-[#C7A27C]">1 July</span>
             </span>
           </div>
 
           <a
             href="#"
-            className="block bg-primary text-white rounded-md px-4 py-2 text-center hover:bg-primary/80 transition-colors mt-6"
+            className="block bg-[#C7A27C] text-[#882F50] rounded-md px-4 py-2 text-center hover:bg-[#C7A27C]/90 transition-colors mt-6 font-semibold"
             onClick={() => setIsOpen(false)}
           >
             Batafsil ma'lumot olish
