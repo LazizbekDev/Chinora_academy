@@ -5,54 +5,48 @@ import { CheckCircle, Clock, Users, Book } from "lucide-react";
 const CourseContent = () => {
   const levels = [
     {
-      level: "Beginner",
-      title: "Asoslarni mukammal egallash",
+      level: "Boshlang‘ich",
+      title: "Asosiy tikuvchilik ko‘nikmalari",
+      duration: "6 hafta",
+      color: "bg-primary",
+      textColor: "text-white",
+      modules: [
+        "Oddiy andoza chizishni o‘rganish",
+        "To‘g‘ri mato tanlash va ishlov berish",
+        "Oddiy liboslarni tikish (ko‘ylak, yubka)",
+        "Qo‘l mehnati va mashina asoslari",
+        "Tikuvchilik asbob-uskunalaridan foydalanish",
+        "Tikishda eng ko‘p uchraydigan xatolarni tuzatish",
+      ],
+    },
+    {
+      level: "O‘rta",
+      title: "Murakkab fasonlar va dizayn",
       duration: "8 hafta",
-      color: "bg-level-beginner",
+      color: "bg-primary/90",
       textColor: "text-white",
       modules: [
-        "Ingliz alifbosi va tovush tizimi",
-        "Asosiy grammatika qoidalari",
-        "Kundalik hayot lug'ati (500+ so'z)",
-        "Oddiy gaplar tuzish",
-        "O'zini tanishtirish va tanishish",
-        "Vaqt, sana, raqamlar",
-        "Oila va do'stlar haqida gaplashish",
-        "Asosiy savollar va javoblar"
+        "Murakkab fasonli andoza tuzish",
+        "Karset va noan’anaviy liboslar bichish",
+        "Fasonlarni o‘zgartirish va bezash",
+        "O‘z dizaynini chizish va tayyorlash",
+        "Brend kiyimlari uslublarini o‘rganish",
+        "Amaliy mashg‘ulotlar – libos tayyorlash",
       ],
     },
     {
-      level: "Elementary → Intermediate",
-      title: "Amaliy til ko'nikmalarini rivojlantirish",
+      level: "Yuqori",
+      title: "Professional darajaga chiqish",
       duration: "10 hafta",
-      color: "bg-level-intermediate",
+      color: "bg-primary/80",
       textColor: "text-white",
       modules: [
-        "Murakkab grammatik tuzilmalar",
-        "Professional lug'at (1000+ so'z)",
-        "Telefon va email yozish",
-        "Prezentatsiya tayyorlash",
-        "Nashr va maqolalar o'qish",
-        "Audio va video materiallar",
-        "Ijtimoiy vaziyatlarda muloqot",
-        "Kelajak rejalari va orzular"
-      ],
-    },
-    {
-      level: "Intermediate → Advanced",
-      title: "Professional darajaga yetish",
-      duration: "12 hafta",
-      color: "bg-level-advanced",
-      textColor: "text-white",
-      modules: [
-        "Business English va professional lug'at",
-        "Idioma va frazeologik so'zlar",
-        "Argumentatsiya va munozara",
-        "Academic writing va research",
-        "Madaniyatlararo muloqot",
-        "IELTS/TOEFL strategiyalari",
-        "Interview va networking",
-        "Native speaker darajasida gaplashish"
+        "Individual buyurtmalar bilan ishlash",
+        "Professional texnikalar va finishing",
+        "Mijozlar bilan muloqot va xizmat",
+        "O‘z kolleksiyasini yaratish",
+        "Fashion ko‘rgazmalarga tayyorlanish",
+        "Tikuvchilik biznesi va brend yaratish",
       ],
     },
   ];
@@ -60,18 +54,18 @@ const CourseContent = () => {
   const features = [
     {
       icon: <Users className="w-5 h-5" />,
-      title: "Interaktiv darslar",
-      description: "Jonli muloqot va amaliy mashqlar"
+      title: "Amaliy mashg‘ulotlar",
+      description: "Har bir darsda o‘z qo‘lingiz bilan libos tikasiz."
     },
     {
       icon: <Clock className="w-5 h-5" />,
-      title: "Moslashuvchan jadval",
-      description: "Sizning vaqtingizga mos keladi"
+      title: "Zamonaviy texnikalar",
+      description: "Eng so‘nggi fashion va tikuvchilik usullari."
     },
     {
       icon: <Book className="w-5 h-5" />,
-      title: "Zamonaviy materiallar",
-      description: "Eng so'nggi o'qitish metodikalari"
+      title: "Mentor va qo‘llab-quvvatlash",
+      description: "Professional ustoz va jamoa yordamida tez o‘sasiz."
     },
   ];
 
@@ -91,7 +85,7 @@ const CourseContent = () => {
           {levels.map((level, index) => (
             <Card
               key={index}
-              className="group w-full max-w-sm bg-card text-card-foreground border border-border rounded-xl shadow-sm hover:shadow-lg hover:bg-primary/5 transition-all duration-300 transform hover:-translate-y-2"
+              className="group w-full max-w-sm bg-[#FCF7F3] text-card-foreground border border-border rounded-xl shadow-sm hover:shadow-lg hover:bg-primary/5 transition-all duration-300 transform hover:-translate-y-2"
             >
               <CardHeader className={`${level.color} ${level.textColor} p-6`}>
                 <div className="flex items-center justify-between mb-2">
@@ -123,7 +117,7 @@ const CourseContent = () => {
           {features.map((feature, index) => (
             <Card
               key={index}
-              className="w-full max-w-sm text-center bg-card text-card-foreground border border-border/40 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+              className="w-full max-w-sm text-center bg-[#FCF7F3] text-card-foreground border border-border/40 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
             >
               <CardContent className="p-8">
                 <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">

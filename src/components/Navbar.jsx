@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className="flex justify-between h-18 items-center">
           {/* Logo */}
           <div className="flex flex-col leading-tight select-none">
-            <img src='/logo/chinora-secondary.svg' width={80} className="drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]" />
+            <img src={isScrolled ? '/logo/chinora-secondary.svg' : '/logo/chinora-main.png'} width={80} className="drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]" />
           </div>
 
           {/* Desktop links */}

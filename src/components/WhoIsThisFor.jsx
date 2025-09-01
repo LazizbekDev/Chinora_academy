@@ -21,32 +21,30 @@ const WhoIsThisFor = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      if (window.innerWidth >= 1024 && scrollRef.current) {
-        const cards = scrollRef.current;
-        const totalWidth = cards.scrollWidth;
-        const windowWidth = window.innerWidth;
-        const scrollAmount = Math.max(0, totalWidth - windowWidth + 32); // Add padding buffer
+      const cards = scrollRef.current;
+      const totalWidth = cards.scrollWidth;
+      const windowWidth = window.innerWidth;
+      const scrollAmount = Math.max(0, totalWidth - windowWidth + 12); // Add padding buffer
 
-        gsap.to(cards, {
-          x: -scrollAmount,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            pin: true,
-            scrub: 1,
-            start: "top top",
-            end: () => `+=${scrollAmount}`,
-            invalidateOnRefresh: true, // Recalculate on resize
-          },
-        });
-      }
+      gsap.to(cards, {
+        x: -scrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          pin: true,
+          scrub: 1,
+          start: "top top",
+          end: () => `+=${scrollAmount}`,
+          invalidateOnRefresh: true, // Recalculate on resize
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="who-for" className="relative bg-background py-16 lg:py-24 overflow-hidden">
+    <section ref={sectionRef} id="who-for" className="relative bg-background py-32 lg:py-24 overflow-hidden">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-foreground font-tarsk gradient-text">
           Bu kurs <span className="text-primary">kimlar uchun?</span>
@@ -56,38 +54,9 @@ const WhoIsThisFor = () => {
         </p>
       </div>
 
-      {/* Mobile/Tablet */}
-      <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full px-6 justify-items-stretch">
-        {targetAudience.map((item, index) => (
-          <Card
-            key={index}
-            className="group w-full bg-gradient-section cursor-pointer hover:bg-primary/5 
-                 border border-foreground/10 hover:border-primary/40 
-                 transition-all duration-300 min-h-[220px] flex flex-col"
-          >
-            <CardContent className="p-6 flex flex-col flex-1 text-center space-y-4">
-              {/* Icon */}
-              <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20">
-                {item.icon}
-              </div>
-
-              {/* Title */}
-              <h3 className="text-lg font-semibold text-foreground font-tarsk">
-                {item.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                {item.description}
-              </p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
 
       {/* Desktop */}
-      <div className="hidden lg:block relative max-w-full overflow-x-hidden">
+      <div className="lg:block relative max-w-full overflow-x-hidden">
         <div ref={scrollRef} className="flex gap-6 px-6">
           {targetAudience.map((item, index) => (
             <Card
