@@ -7,6 +7,7 @@ import MatrixChoice from "@/components/MatrixChoice";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import CourseBenefits from "@/components/CourseBenefits";
 // import Header from "../components/Header";
 // import LandingPage from "../components/LandingPage";
 
@@ -23,7 +24,9 @@ const Index = () => {
       <AboutInstructor />
       <CourseContent />
       <PricingSection />
-      {/* <MatrixChoice /> */}
+      <div className="overflow-hidden">
+        <CourseBenefits />
+      </div>
       <FAQ />
       <Footer />
     </div>

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Award, Users, Globe, GraduationCap, Briefcase } from "lucide-react";
-import instructorImage from "@/assets/jacob-instructor.jpg";
+import instructorImage from "@/assets/image.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 

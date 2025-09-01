@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Clock, Users, Book } from "lucide-react";
+import { CheckCircle, Clock, Users, Book, Sparkles } from "lucide-react";
 
 const CourseContent = () => {
   const levels = [
@@ -51,45 +51,32 @@ const CourseContent = () => {
     },
   ];
 
-  const features = [
-    {
-      icon: <Users className="w-5 h-5" />,
-      title: "Amaliy mashg‘ulotlar",
-      description: "Har bir darsda o‘z qo‘lingiz bilan libos tikasiz."
-    },
-    {
-      icon: <Clock className="w-5 h-5" />,
-      title: "Zamonaviy texnikalar",
-      description: "Eng so‘nggi fashion va tikuvchilik usullari."
-    },
-    {
-      icon: <Book className="w-5 h-5" />,
-      title: "Mentor va qo‘llab-quvvatlash",
-      description: "Professional ustoz va jamoa yordamida tez o‘sasiz."
-    },
-  ];
-
   return (
     <section id="course-content" className="py-20 bg-gradient-section">
       <div className="container mx-auto px-6">
+        {/* Section Title */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
             Kurs <span className="text-primary">tarkibi</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Har bir bosqich alohida maqsadga yo'naltirilgan va amaliy natijalar beradi
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto justify-items-center mb-16">
+        {/* Course Levels */}
+        <div className="grid gap-10 max-w-7xl mx-auto [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
           {levels.map((level, index) => (
             <Card
               key={index}
-              className="group w-full max-w-sm bg-[#FCF7F3] text-card-foreground border border-border rounded-xl shadow-sm hover:shadow-lg hover:bg-primary/5 transition-all duration-300 transform hover:-translate-y-2"
+              className={`group w-full bg-[#FCF7F3] text-card-foreground border border-border rounded-xl shadow-sm hover:shadow-lg hover:bg-primary/5 transition-all duration-300 transform hover:-translate-y-2 ${levels.length === 3 && index === levels.length - 1 ? 'sm:col-span-2 md:col-span-1' : ''}`}
             >
               <CardHeader className={`${level.color} ${level.textColor} p-6`}>
                 <div className="flex items-center justify-between mb-2">
-                  <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                  <Badge
+                    variant="secondary"
+                    className="bg-white/20 text-white border-white/30"
+                  >
                     {level.level}
                   </Badge>
                   <div className="flex items-center gap-1 text-sm">
@@ -107,24 +94,6 @@ const CourseContent = () => {
                     <span className="text-sm text-foreground">{module}</span>
                   </div>
                 ))}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Features Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto justify-items-center">
-          {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="w-full max-w-sm text-center bg-[#FCF7F3] text-card-foreground border border-border/40 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-            >
-              <CardContent className="p-8">
-                <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                  <div className="text-primary">{feature.icon}</div>
-                </div>
-                <h3 className="text-lg font-bold mb-2 text-foreground">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm">{feature.description}</p>
               </CardContent>
             </Card>
           ))}

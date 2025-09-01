@@ -32,8 +32,12 @@ const AccordionTrigger = React.forwardRef(({ className, children, ...props }, re
         )}
       >
         {/* icon state (plus / x) */}
-        <Plus className="h-5 w-5 transition-transform duration-200 group-data-[state=open]:hidden" />
-        <X className="h-5 w-5 hidden transition-transform duration-200 group-data-[state=open]:block" />
+        <Plus
+          className={cn(
+            "h-5 w-5 transition-transform duration-200",
+            "group-data-[state=open]:rotate-45"
+          )}
+        />
       </span>
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>

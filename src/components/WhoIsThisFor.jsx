@@ -24,7 +24,7 @@ const WhoIsThisFor = () => {
       const cards = scrollRef.current;
       const totalWidth = cards.scrollWidth;
       const windowWidth = window.innerWidth;
-      const scrollAmount = Math.max(0, totalWidth - windowWidth + 12); // Add padding buffer
+      const scrollAmount = Math.max(0, totalWidth - windowWidth + 42); // Add padding buffer
 
       gsap.to(cards, {
         x: -scrollAmount,

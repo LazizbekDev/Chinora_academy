@@ -1,4 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { CreditCard, Phone, Send, Mail } from "lucide-react";
 
 const FAQ = () => {
   const faqs = [
@@ -19,52 +20,72 @@ const FAQ = () => {
   return (
     <section id="faq" className="py-20 bg-gradient-section">
       <div className="container mx-auto px-6">
-        <div className="mb-16">
+        <div className="mb-16 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             Tez-tez <span className="text-primary">so'raladigan savollar</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Sizning barcha savollaringizga javob berish uchun eng ko'p so'raladigan savollarni to'pladik
           </p>
         </div>
 
-        <div className="max-w-8xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+        <div className="max-w-4xl mx-auto">
+          <Accordion type="single" collapsible className="space-y-6">
             {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="border-t transition-all duration-300"
-              >
-                <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
-                  <span className="font-semibold text-foreground">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4">
-                  <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
-                </AccordionContent>
-              </AccordionItem>
+              <div key={index} className="relative">
+                <AccordionItem value={`item-${index}`} className="border-none">
+                  <AccordionTrigger className="px-6 py-0 text-left hover:no-underline font-semibold text-foreground text-lg">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-4 text-base text-muted-foreground leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+                {index < faqs.length - 1 && (
+                  <hr className="border-t border-secondary mt-6" />
+                )}
+              </div>
             ))}
           </Accordion>
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Boshqa savollaringiz bormi?
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <a
-              href="https://t.me/jacobenglish_support"
-              className="text-primary hover:text-primary-light transition-colors"
-            >
-              📱 Telegram orqali yozing
-            </a>
-            <span className="hidden sm:block text-muted-foreground">•</span>
-            <a
-              href="tel:+998901234567"
-              className="text-primary hover:text-primary-light transition-colors"
-            >
-              📞 Qo'ng'iroq qiling
-            </a>
+        {/* Payment & contacts */}
+        <div className="container mx-auto px-6 mt-16 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center justify-center gap-2 text-primary font-semibold">
+                <CreditCard className="w-5 h-5" />
+                To‘lov usullari
+              </div>
+              <p className="text-muted-foreground mt-2">
+                Click, Payme, Uzcard, Humo
+              </p>
+            </div>
+            <div>
+              <a
+                href="tel:+998901234567"
+                className="flex items-center justify-center gap-2 text-primary font-semibold hover:underline"
+              >
+                <Phone className="w-5 h-5" /> +998 90 123 45 67
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://t.me/chinora_support"
+                target="_blank"
+                className="flex items-center justify-center gap-2 text-primary font-semibold hover:underline"
+              >
+                <Send className="w-5 h-5" /> @chinora_support
+              </a>
+            </div>
+            <div>
+              <a
+                href="mailto:info@chinora.uz"
+                className="flex items-center justify-center gap-2 text-primary font-semibold hover:underline"
+              >
+                <Mail className="w-5 h-5" /> info@chinora.uz
+              </a>
+            </div>
           </div>
         </div>
       </div>

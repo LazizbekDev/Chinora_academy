@@ -101,7 +101,7 @@ const PricingSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {pricingPlans.map((plan, index) => (
             <Card
               key={index}
@@ -163,31 +163,6 @@ const PricingSection = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {guarantees.map((guarantee, index) => (
-            <div key={index} className="text-center space-y-3">
-              <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                <div className="text-primary">{guarantee.icon}</div>
-              </div>
-              <h3 className="font-bold text-foreground">{guarantee.title}</h3>
-              <p className="text-sm text-muted-foreground">{guarantee.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            To'lov usullari: Click, Payme, Uzcard, Humo
-          </p>
-          <div className="flex flex-col sm:flex-row gap-2 items-center justify-center text-sm text-muted-foreground">
-            <span>📞 +998 90 123 45 67</span>
-            <span className="hidden sm:block">•</span>
-            <span>✈️ @jacobenglish_support</span>
-            <span className="hidden sm:block">•</span>
-            <span>📧 info@jacobenglish.uz</span>
-          </div>
         </div>
       </div>
     </section>
