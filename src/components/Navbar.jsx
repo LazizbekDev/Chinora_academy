@@ -23,10 +23,10 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-14 items-center">
+        <div className="flex justify-between h-18 items-center">
           {/* Logo */}
-          <div className="flex flex-col leading-tight">
-            <Logo className="color-red" />
+          <div className="flex flex-col leading-tight select-none">
+            <img src='/logo/chinora-secondary.svg' width={80} className="drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]" />
           </div>
 
           {/* Desktop links */}
@@ -69,11 +69,10 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(true)}
-              className={`focus:outline-none ${
-                isScrolled ? "text-[#090909]" : "text-[hsl(var(--secondary-foreground))]"
-              }`}
             >
-              <Menu size={32} />
+              <Menu size={32} className={`font-semibold ${
+                      isScrolled ? "text-secondary" : "text-[hsl(var(--secondary-foreground))]"
+                    }`} />
             </button>
           </div>
         </div>

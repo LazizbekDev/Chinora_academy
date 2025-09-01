@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Award, Users, Globe, GraduationCap, Briefcase } from "lucide-react";
 import instructorImage from "@/assets/jacob-instructor.jpg";
 import gsap from "gsap";
@@ -156,12 +155,12 @@ const AboutInstructor = () => {
               </div>
 
               {/* Stats */}
-              <Card className="border-t border-border pt-6 stats-card bg-gradient-section">
-                <CardContent className="p-6">
+              <Card className="w-full border-t border-border pt-6 stats-card bg-gradient-section">
+                <CardContent className="p-6 w-full">
                   <h4 className="text-lg font-bold mb-4 text-foreground text-center">
                     Ijtimoiy tarmoqlarda faol
                   </h4>
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-x-12">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
                     {stats.map((stat, index) => (
                       <div key={index} className="text-center">
                         <div className="text-xl font-bold text-primary">{stat.number}</div>
@@ -171,6 +170,7 @@ const AboutInstructor = () => {
                   </div>
                 </CardContent>
               </Card>
+
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users,  Heart, PenTool, SwatchBook, Scissors, Banknote } from "lucide-react";
+import { Users, Heart, PenTool, SwatchBook, Scissors, Banknote } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -57,19 +57,34 @@ const WhoIsThisFor = () => {
       </div>
 
       {/* Mobile/Tablet */}
-      <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto px-6">
+      <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full px-6 justify-items-stretch">
         {targetAudience.map((item, index) => (
-          <Card key={index} className="group bg-card border-none shadow-sm hover:shadow-md transition-all duration-300">
-            <CardContent className="p-6 text-center space-y-4 relative">
+          <Card
+            key={index}
+            className="group w-full bg-gradient-section cursor-pointer hover:bg-primary/5 
+                 border border-foreground/10 hover:border-primary/40 
+                 transition-all duration-300 min-h-[220px] flex flex-col"
+          >
+            <CardContent className="p-6 flex flex-col flex-1 text-center space-y-4">
+              {/* Icon */}
               <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20">
                 {item.icon}
               </div>
-              <h3 className="text-lg font-semibold text-foreground font-tarsk">{item.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed absolute bottom-0">{item.description}</p>
+
+              {/* Title */}
+              <h3 className="text-lg font-semibold text-foreground font-tarsk">
+                {item.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                {item.description}
+              </p>
             </CardContent>
           </Card>
         ))}
       </div>
+
 
       {/* Desktop */}
       <div className="hidden lg:block relative max-w-full overflow-x-hidden">
@@ -77,7 +92,7 @@ const WhoIsThisFor = () => {
           {targetAudience.map((item, index) => (
             <Card
               key={index}
-              className="min-w-[300px] flex-shrink-0 bg-gradient-section cursor-pointer hover:bg-primary-foreground border border-foreground/20 rounded-lg p-4"
+              className="min-w-[300px] flex-shrink-0 group bg-gradient-section cursor-pointer hover:bg-primary-foreground border border-foreground/20 rounded-lg p-4 transition-all duration-300 max-w-xs"
             >
               <CardContent className="flex flex-col justify-between h-full p-0 pb-2">
                 <div className="space-y-4">
