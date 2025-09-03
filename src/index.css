@@ -10,7 +10,8 @@
 }
 
 .header-background {
-  background: #EADBCF; /* default: mobile - full brand color */
+  background: #EADBCF;
+  /* default: mobile - full brand color */
   position: relative;
   overflow: hidden;
 }
@@ -174,5 +175,21 @@
     color: hsl(var(--foreground));
     font-family: "tarsk", "Inter", sans-serif;
     /* Added fallback */
+  }
+
+  .luxury-card {
+    @apply bg-[#FCF7F3] rounded-2xl shadow-md border border-[#EADBCF] relative overflow-hidden;
+  }
+
+  .luxury-frame {
+    @apply rounded-full p-[3px] bg-gradient-to-r from-[#C7A27C] to-[#7E3057];
+  }
+
+  .luxury-button-primary {
+    @apply px-8 py-3 rounded-xl bg-[#7E3057] text-white font-semibold shadow-md hover:bg-[#642443] transition duration-300;
+  }
+
+  .luxury-button-gold {
+    @apply px-8 py-3 rounded-xl bg-[#C7A27C] text-[#2E1F26] font-semibold shadow-lg hover:bg-[#b08f67] transition duration-300;
   }
 }

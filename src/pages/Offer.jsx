@@ -7,6 +7,9 @@ import {
     Users,
     Timer,
 } from "lucide-react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import instructorImage from "/images/hero.jpg"; // Instructor rasm import qilindi (avvalgi koddagi kabi)
 
 const nextTargetDate = () => {
     const now = new Date();
@@ -76,6 +79,22 @@ const Offer = () => {
                             bularning barchasini ushbu bepul masterklassda bosqichma-bosqich o‘rganasiz.
                         </p>
 
+                        {/* Instructor Image - Hero bo'limiga qo'shildi, title va description o'rtasida */}
+                        <div className="relative rounded-2xl overflow-hidden max-w-md mx-auto md:mx-0">
+                            <LazyLoadImage
+                                src={instructorImage}
+                                alt="Ibodullayeva Chinora - Kurs asoschisi"
+                                className="w-full h-auto object-cover rounded-2xl"
+                                effect="blur"
+                                threshold={100}
+                                placeholderSrc={instructorImage} // Past sifatli placeholder (ixtiyoriy)
+                            />
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                                <h3 className="text-lg font-bold text-white">Ibodullayeva Chinora</h3>
+                                <p className="text-sm text-white/80">Kurs asoschisi va ustoz</p>
+                            </div>
+                        </div>
+
                         {/* Chips */}
                         <div className="flex flex-wrap gap-3">
                             <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2 text-sm border border-border text-secondary-foreground">
@@ -104,10 +123,10 @@ const Offer = () => {
                             ].map((t, i) => (
                                 <div
                                     key={i}
-                                    className="flex items-start gap-3 rounded-lg bg-primary p-4 border cursor-pointer border-border hover:bg-secondary hover:text-secondary-foreground transition-colors"
+                                    className="group flex items-start gap-3 rounded-lg bg-primary p-4 border cursor-pointer border-border hover:bg-secondary hover:text-secondary-foreground transition-colors"
                                 >
-                                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                                    <p className="text-sm md:text-base text-primary-foreground">{t}</p>
+                                    <CheckCircle2 className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0 group-hover:text-secondary-foreground" />
+                                    <p className="text-sm md:text-base text-primary-foreground group-hover:text-secondary-foreground">{t}</p>
                                 </div>
                             ))}
                         </div>

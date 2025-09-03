@@ -56,27 +56,29 @@ const CourseBenefits = () => {
   ];
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = scrollRef.current;
-      const totalWidth = cards.scrollWidth;
-      const windowWidth = window.innerWidth;
-      const scrollAmount = Math.max(0, totalWidth - windowWidth + 32);
+    if (window.innerWidth >= 1024) { // faqat desktop uchun
+      const ctx = gsap.context(() => {
+        const cards = scrollRef.current;
+        const totalWidth = cards.scrollWidth;
+        const windowWidth = window.innerWidth;
+        const scrollAmount = Math.max(0, totalWidth - windowWidth + 32);
 
-      gsap.to(cards, {
-        x: -scrollAmount,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          pin: true,
-          scrub: 1,
-          start: "top top",
-          end: () => `+=${scrollAmount}`,
-          invalidateOnRefresh: true,
-        },
-      });
-    }, sectionRef);
+        gsap.to(cards, {
+          x: -scrollAmount,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            pin: true,
+            scrub: 1,
+            start: "top top",
+            end: () => `+=${scrollAmount}`,
+            invalidateOnRefresh: true,
+          },
+        });
+      }, sectionRef);
 
-    return () => ctx.revert();
+      return () => ctx.revert();
+    }
   }, []);
 
   return (

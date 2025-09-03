@@ -1,7 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, Award, Users, Globe, GraduationCap, Briefcase } from "lucide-react";
-import instructorImage from "@/assets/image.png";
+import { CheckCircle, Award, Users, Globe, GraduationCap } from "lucide-react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import instructorImage from "/images/hero.jpg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -9,14 +11,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AboutInstructor = () => {
   const sectionRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
 
   const achievements = [
     { icon: <Users className="w-5 h-5" />, text: "500+ muvaffaqiyatli shogird" },
-    { icon: <Globe className="w-5 h-5" />, text: "20+ yillik tajriba" },
-    { icon: <Award className="w-5 h-5" />, text: "Xalqaro tanlov g'olibi" },
+    { icon: <Globe className="w-5 h-5" />, text: "8 yillik tajriba" },
+    { icon: <Award className="w-5 h-5" />, text: "Dimlom sertifikatlar" },
     { icon: <CheckCircle className="w-5 h-5" />, text: "98% muvaffaqiyat darajasi" },
-    { icon: <GraduationCap className="w-5 h-5" />, text: "Mualliflik metodikasi" },
-    { icon: <Briefcase className="w-5 h-5" />, text: "Muvaffaqiyatli brendlar" },
+    { icon: <GraduationCap className="w-5 h-5" />, text: "Professional jahon standartiga mos metodika" },
   ];
 
   const stats = [
@@ -30,7 +32,6 @@ const AboutInstructor = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Instructor image
       gsap.from(".instructor-image", {
         x: -50,
         opacity: 0,
@@ -42,7 +43,6 @@ const AboutInstructor = () => {
         },
       });
 
-      // Heading
       gsap.from(".instructor-heading", {
         y: 50,
         opacity: 0,
@@ -54,7 +54,6 @@ const AboutInstructor = () => {
         },
       });
 
-      // Achievements
       gsap.from(".achievement-item", {
         y: 30,
         opacity: 0,
@@ -67,7 +66,6 @@ const AboutInstructor = () => {
         },
       });
 
-      // Stats
       gsap.from(".stats-card", {
         y: 40,
         opacity: 0,
@@ -76,19 +74,6 @@ const AboutInstructor = () => {
         scrollTrigger: {
           trigger: ".stats-card",
           start: "top 85%",
-        },
-      });
-
-      // Badges
-      gsap.from(".badge-item", {
-        opacity: 0,
-        scale: 0.8,
-        stagger: 0.1,
-        duration: 0.4,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: ".badge-item",
-          start: "top 95%",
         },
       });
     }, sectionRef);
@@ -106,7 +91,7 @@ const AboutInstructor = () => {
               Kurs asoschisi <span className="text-primary">Ibodullayeva Chinora</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              20 yildan ortiq tajribaga ega tikuvchilik va dizaynerlik ustozasi.
+              8 yildan ortiq tajribaga ega tikuvchilik va dizaynerlik ustozasi.
               O‘zining noyob metodikasi va Müller andazalari orqali yuzlab
               shogirdlarni moda sanoatida muvaffaqiyatga yetaklagan.
             </p>
@@ -115,15 +100,25 @@ const AboutInstructor = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Image */}
             <div className="relative instructor-image">
-              <div className="relative rounded-2xl overflow-hidden">
-                <img
+              <div className="relative rounded-2xl overflow-hidden group">
+                {/* Skeleton shimmer */}
+                {!loaded && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-muted via-muted/60 to-muted animate-[shimmer_2s_infinite] bg-[length:200%_100%]" />
+                )}
+
+                <LazyLoadImage
                   src={instructorImage}
                   alt="Ibodullayeva Chinora"
-                  className="w-full h-auto object-cover"
+                  className={`w-full h-auto object-cover transition-all duration-700 ease-out 
+                    ${loaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
+                  afterLoad={() => setLoaded(true)}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+
+                {/* Luxury gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-accent-red text-accent-red-foreground p-4 rounded-full shadow-cta">
+
+              <div className="absolute -bottom-6 -right-6 bg-accent-red text-accent-red-foreground p-4 rounded-full shadow-xl">
                 <Award className="w-8 h-8" />
               </div>
             </div>
@@ -155,7 +150,7 @@ const AboutInstructor = () => {
               </div>
 
               {/* Stats */}
-              <Card className="w-full border-t border-border pt-6 stats-card bg-gradient-section">
+              <Card className="w-full border-t border-border pt-6 stats-card bg-gradient-to-r from-background via-muted/40 to-background">
                 <CardContent className="p-6 w-full">
                   <h4 className="text-lg font-bold mb-4 text-foreground text-center">
                     Ijtimoiy tarmoqlarda faol
@@ -170,7 +165,6 @@ const AboutInstructor = () => {
                   </div>
                 </CardContent>
               </Card>
-
             </div>
           </div>
         </div>
