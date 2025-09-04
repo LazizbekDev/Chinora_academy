@@ -212,7 +212,7 @@ const PricingSection = () => {
                 <Copy className="w-5 h-5" />
               </button>
             </div>
-            <div className="text-sm text-muted-foreground mb-4">Yusupdjanov Akbarjon</div>
+            <div className="text-sm text-muted-foreground mb-4">Ibodullayeva Chinora</div>
             <hr className="border-t border-border mb-4" />
             <p className="text-sm text-muted-foreground mb-4">
               To'lov chekini telegram orqali{" "}
