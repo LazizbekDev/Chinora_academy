@@ -168,12 +168,25 @@ const PricingSection = () => {
                 </div>
 
                 <Button
-                  className="hero-btn mt-8 flex items-center gap-4 bg-primary hover:bg-primary-light transition-all duration-300 text-primary-foreground font-bold text-lg px-6 py-3 rounded-xl shadow-lg w-full justify-center group"
-                  variant={plan.popular ? "cta" : "hero"}
                   onClick={handleRegisterClick}
+                  className={`relative mt-8 w-full flex items-center justify-center gap-4 
+                    rounded-lg px-6 py-3 font-bold text-lg leading-tight 
+                    transition-all duration-300 shadow-md hover:shadow-lg 
+                    focus:outline-none focus:ring-2 focus:ring-primary/50
+                    ${plan.popular 
+                      ? "bg-gradient-section text-secondary-foreground border border-[#C7A27C]/20 hover:bg-[#C7A27C]/90 hover:border-[#C7A27C]" 
+                      : "bg-gradient-to-r from-primary to-primary-light text-white hover:from-primary-light hover:to-primary-dark"}
+                    group`}
                 >
                   Kursni tanlash
-                  <span className="relative flex items-center justify-center w-7 h-7 rounded-full bg-primary-foreground text-primary transition-transform duration-300 group-hover:rotate-90">
+                  <span
+                    className={`flex items-center justify-center w-8 h-8 rounded-full 
+                      transition-all duration-300 ease-in-out
+                      ${plan.popular 
+                        ? "group-hover:bg-[#C7A27C]/10 text-secondary-foreground" 
+                        : "text-secondary group-hover:bg-primary/10"}
+                    `}
+                  >
                     <Plus size={20} strokeWidth={2.5} />
                   </span>
                 </Button>
