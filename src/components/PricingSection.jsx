@@ -167,11 +167,6 @@ const PricingSection = () => {
                   ))}
                 </div>
 
-                <div className="p-5 bg-gradient-to-br from-primary/10 to-card rounded-lg border border-primary/20 relative overflow-hidden shine-effect">
-                  <div className="text-sm font-semibold text-primary mb-2">Bonus:</div>
-                  <div className="text-sm text-muted-foreground z-10 relative">{plan.bonus}</div>
-                </div>
-
                 <Button
                   className="hero-btn mt-8 flex items-center gap-4 bg-primary hover:bg-primary-light transition-all duration-300 text-primary-foreground font-bold text-lg px-6 py-3 rounded-xl shadow-lg w-full justify-center group"
                   variant={plan.popular ? "cta" : "hero"}
