@@ -60,8 +60,11 @@ const CourseBenefits = () => {
       let anim;
 
       const setupScroll = () => {
-        // eski triggerlarni o‘chirib tashlaymiz
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        // ❌ Buni ishlatmaymiz:
+        // ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+        // Faqat shu component ichidagini kill qilamiz
+        anim?.scrollTrigger?.kill();
         gsap.killTweensOf(scrollRef.current);
 
         const cards = scrollRef.current;
@@ -86,18 +89,17 @@ const CourseBenefits = () => {
       };
 
       setupScroll();
-
-      // resize bo‘lganda qayta setup
       window.addEventListener("resize", setupScroll);
 
       return () => {
-        if (anim) anim.scrollTrigger?.kill();
+        anim?.scrollTrigger?.kill();
         window.removeEventListener("resize", setupScroll);
       };
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
 
   return (
     <section

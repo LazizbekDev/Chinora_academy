@@ -45,7 +45,6 @@ const AboutInstructor = () => {
         scrollTrigger: {
           trigger: image,
           start: "top 80%",
-          markers: true, 
         },
       });
 
@@ -57,7 +56,6 @@ const AboutInstructor = () => {
         scrollTrigger: {
           trigger: heading,
           start: "top 85%",
-          markers: true, 
         },
       });
 
@@ -70,7 +68,6 @@ const AboutInstructor = () => {
         scrollTrigger: {
           trigger: items,
           start: "top 90%",
-          markers: true, 
         },
       });
 
@@ -82,7 +79,6 @@ const AboutInstructor = () => {
         scrollTrigger: {
           trigger: stats,
           start: "top 85%",
-          markers: true,
         },
       });
     }, sectionRef);
