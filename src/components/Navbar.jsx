@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import Logo from '@/assets/flag.svg?react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const links = [
+    { name: "Kim uchun", id: "who-for" },
+    { name: "Metodning avtori", id: "about" },
+    { name: "Programma", id: "course-content" },
+    { name: "Narxi", id: "pricing" },
+    { name: "Ko'p savollar", id: "faq" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,13 +21,23 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleScroll = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const yOffset = -80; // navbar balandligi (80px)
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+    setIsOpen(false); // mobile menu yopiladi
+  };
+
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
-        isScrolled
-          ? "bg-primary shadow-md"
-          : "bg-gradient-to-b from-[#EADBCF]/80 to-transparent"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${isScrolled
+        ? "bg-primary shadow-md"
+        : "bg-gradient-to-b from-[#EADBCF]/80 to-transparent"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-18 items-center">
@@ -31,16 +48,15 @@ const Navbar = () => {
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center space-x-8">
-            {["Kim uchun", "Metodning avtori", "Programma", "Narxi", "Ko'p savollar"].map((link, i) => (
-              <a
+            {links.map((link, i) => (
+              <button
                 key={i}
-                href="#"
-                className={`hover:text-[#C7A27C] transition-colors ${
-                  isScrolled ? "text-[hsl(var(--secondary))]" : "text-[hsl(var(--secondary-foreground))]"
-                }`}
+                onClick={() => handleScroll(link.id)}
+                className={`hover:text-[#C7A27C] transition-colors ${isScrolled ? "text-[hsl(var(--secondary))]" : "text-[hsl(var(--secondary-foreground))]"
+                  }`}
               >
-                {link}
-              </a>
+                {link.name}
+              </button>
             ))}
 
             {/* START DATE badge */}
@@ -48,14 +64,12 @@ const Navbar = () => {
               <div className="flex items-center space-x-2">
                 <span className="flex items-center space-x-1">
                   <span
-                    className={`w-3 h-3 rounded-full ${
-                      isScrolled ? "bg-secondary" : "bg-primary"
-                    }`}
+                    className={`w-3 h-3 rounded-full ${isScrolled ? "bg-secondary" : "bg-primary"
+                      }`}
                   />
                   <span
-                    className={`font-semibold ${
-                      isScrolled ? "text-secondary" : "text-[hsl(var(--secondary-foreground))]"
-                    }`}
+                    className={`font-semibold ${isScrolled ? "text-secondary" : "text-[hsl(var(--secondary-foreground))]"
+                      }`}
                   >
                     Start
                   </span>
@@ -70,9 +84,8 @@ const Navbar = () => {
             <button
               onClick={() => setIsOpen(true)}
             >
-              <Menu size={32} className={`font-semibold ${
-                      isScrolled ? "text-secondary" : "text-[hsl(var(--secondary-foreground))]"
-                    }`} />
+              <Menu size={32} className={`font-semibold ${isScrolled ? "text-white" : "text-[hsl(var(--secondary-foreground))]"
+                }`} />
             </button>
           </div>
         </div>
@@ -92,15 +105,14 @@ const Navbar = () => {
         </button>
 
         <div className="mt-20 space-y-6 px-6 text-lg">
-          {["Kim uchun", "Metodning avtori", "Programma", "Narxi", "Ko'p savollar"].map((link, i) => (
-            <a
+          {links.map((link, i) => (
+            <button
               key={i}
-              href="#"
+              onClick={() => handleScroll(link.id)}
               className="block hover:text-[#C7A27C] transition-colors"
-              onClick={() => setIsOpen(false)}
             >
-              {link}
-            </a>
+              {link.name}
+            </button>
           ))}
 
           {/* Start date mobile */}
@@ -114,7 +126,7 @@ const Navbar = () => {
 
           <a
             href="#"
-            className="block bg-[#C7A27C] text-[#882F50] rounded-md px-4 py-2 text-center hover:bg-[#C7A27C]/90 transition-colors mt-6 font-semibold"
+            className="block bg-[#C7A27C] text-white rounded-md px-4 py-2 text-center hover:bg-[#C7A27C]/90 transition-colors mt-6 font-semibold"
             onClick={() => setIsOpen(false)}
           >
             Batafsil ma'lumot olish

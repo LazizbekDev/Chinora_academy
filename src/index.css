@@ -1,6 +1,10 @@
 @config "../tailwind.config.js";
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: 'tarsk';
   src: url('/src/assets/tarsk.woff2') format('woff2');
@@ -19,7 +23,7 @@
 @media (min-width: 768px) {
   .header-background {
     background:
-      linear-gradient(to right, #EADBCF 75%, transparent 75%),
+      linear-gradient(to right, #fbf0e7 75%, transparent 75%),
       url("/images/sewing-illustration.jpg") no-repeat center;
     background-size: auto 80%, cover;
     /* rasm balandligini 80% qilib, yanada kengroq ko‘rinadi */
@@ -36,78 +40,86 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(90deg, #e7d7c9 2px, transparent 2px),
-    linear-gradient(0deg, #e7d7c9 2px, transparent 2px);
+    linear-gradient(90deg, #f8e8db 2px, transparent 2px),
+    linear-gradient(0deg, #f8e8db 2px, transparent 2px);
   background-size: 55px 55px;
   background-position: 0 0;
   width: 100%;
   z-index: 0;
 }
 
+.shine-effect {
+  position: relative;
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 70%);
+  animation: shine 3s infinite;
+  z-index: 0;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+
+  20% {
+    left: 80%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
 
 @layer base {
   :root {
-    --background: 30 60% 97%;
-    /* #FDF8F2 */
-    --foreground: 330 20% 15%;
-    /* Dark plum text (#2A0E17 yaqin) */
+    --background: 30 50% 98%;
+    /* Sof ivory (#FCFAF7) */
 
-    --card: 27, 39%, 86%;
-    /* #EFEFEF */
-    --card-foreground: 0 0% 3.6%;
-    /* #090909 */
+    --foreground: 330 25% 12%;
+    /* Toza, boy qora-plum (#1A0E13) */
 
-    --popover: 0 0% 93.7%;
-    /* #EFEFEF */
-    --popover-foreground: 0 0% 3.6%;
-    /* #090909 */
+    --card: 33 40% 96%;
+    /* Sofroq ivory/beige (#FAF6F1) */
+    --card-foreground: 330 20% 15%;
 
-    --primary: 330 45% 34%;
-    /* #882F50 */
+    --primary: 340 70% 38%;
+    /* Rich Raspberry Burgundy (#9B1C48) */
+    --primary-light: 340 70% 50%;
+    /* Rose Red (#C43C66) */
     --primary-foreground: 0 0% 100%;
-    /* White text */
+    /* White */
 
-    --primary-light: 330 45% 44%;
-    /* A bit lighter shade for hover (#A2446D) */
+    --secondary: 40 55% 75%;
+    /* Champagne Gold (#E7CBAA) */
+    --secondary-foreground: 330 25% 15%;
 
-    --secondary: 33 30% 85%;
-    /* #EADBCF - beige/goldish secondary bg */
-    --secondary-foreground: 330 25% 20%;
-    /* Dark text */
+    --muted: 30 30% 92%;
+    /* Sof warm beige (#F4ECE6) */
+    --muted-foreground: 330 20% 35%;
 
-    --muted: 30 30% 90%;
-    /* Soft beige-gray */
-    --muted-foreground: 330 20% 40%;
-    --muted-foreground: 0 0% 40%;
-    /* Default muted foreground, adjust if needed */
-    --accent: 33 25% 95%;
-    /* Cream accent */
-    --accent-foreground: 330 25% 20%;
+    --accent: 210 70% 45%;
+    /* Royal Blue (#2D6DE8) */
+    --accent-foreground: 0 0% 100%;
 
-    --accent-red: 330 45% 34%;
-    /* Same as primary for consistency */
-    --accent-red-light: 330 45% 44%;
-    --accent-red-foreground: 0 0% 100%;
-    /* #FFFFFF */
-
-    --destructive: 0 75% 45%;
-    /* red warning (unchanged) */
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 33 30% 85%;
-    --input: 33 30% 85%;
-    --ring: 330 45% 34%;
-    /* matches primary */
-
-    --level-beginner: 120 50% 45%;
-    /* green */
-    --level-intermediate: 220 50% 50%;
-    /* blue */
-    --level-advanced: 330 60% 40%;
-    /* burgundy */
-
-    --radius: 0.75rem;
+    --border: 40 40% 85%;
+    /* Champagne border (#EADAC2) */
+    --input: 40 40% 85%;
+    --ring: 340 70% 38%;
+    /* Matches primary */
   }
+
+
 
   .dark {
     --background: 0 0% 8%;

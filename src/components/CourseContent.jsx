@@ -7,32 +7,37 @@ const CourseContent = () => {
     {
       level: "Boshlang‘ich",
       title: "Asosiy tikuvchilik ko‘nikmalari",
-      duration: "6 hafta",
+      duration: "8 hafta",
       color: "bg-primary",
       textColor: "text-white",
       modules: [
-        "Oddiy andoza chizishni o‘rganish",
-        "To‘g‘ri mato tanlash va ishlov berish",
-        "Oddiy liboslarni tikish (ko‘ylak, yubka)",
-        "Qo‘l mehnati va mashina asoslari",
-        "Tikuvchilik asbob-uskunalaridan foydalanish",
-        "Tikishda eng ko‘p uchraydigan xatolarni tuzatish",
+        "Bolalar va kattalar ssos andazasi va uni qo'llash",
+        "Chok turlari",
+        "Yeng moduli",
+        "Yoqalar moduli",
+        "Modellashtirish va amaliy mashg'ulotlar",
+        "Murakkab bichimli liboslar bichish",
       ],
+      bonus: "Bonus:Maqsad qo'yish va rivojlanish seminari!"
     },
     {
       level: "O‘rta",
       title: "Murakkab fasonlar va dizayn",
-      duration: "8 hafta",
+      duration: "16 hafta",
       color: "bg-primary/90",
       textColor: "text-white",
       modules: [
-        "Murakkab fasonli andoza tuzish",
-        "Karset va noan’anaviy liboslar bichish",
-        "Fasonlarni o‘zgartirish va bezash",
-        "O‘z dizaynini chizish va tayyorlash",
-        "Brend kiyimlari uslublarini o‘rganish",
-        "Amaliy mashg‘ulotlar – libos tayyorlash",
+        "Jahon standartidagi bazaviy asoslar konstruksiyasi va ulardan texnikas",
+        "Jahon standartida tikish texnologiyalari",
+        "Modellashtirish (ayollar ko'ylagi va bluzkalar)",
+        "Yeng mavzusi",
+        "Nostandarst qomatlar bilan ishlash",
+        "Oqshom liboslari. Drapirovka",
+        "Dizaynerlik. Eskiz chizish",
+        "Psixologik darslar",
+        "Marketing va brending asoslari",
       ],
+      bonus: "Bonus modul: Shaxsiy brending va ijtimoiy tarmoqlarda marketing"
     },
     {
       level: "Yuqori",
@@ -41,13 +46,17 @@ const CourseContent = () => {
       color: "bg-primary/80",
       textColor: "text-white",
       modules: [
-        "Individual buyurtmalar bilan ishlash",
-        "Professional texnikalar va finishing",
-        "Mijozlar bilan muloqot va xizmat",
-        "O‘z kolleksiyasini yaratish",
-        "Fashion ko‘rgazmalarga tayyorlanish",
-        "Tikuvchilik biznesi va brend yaratish",
+        "Myuller metodikasida ustki kiyimlar asosi moduli",
+        "Myuller metodikasida yubka va shim moduli",
+        "Yubka va shim amaliyotlari",
+        "Ustki kiyimlar uchun yeng moduli",
+        "Kostyum modellashtirish moduli",
+        "Palto modellashtirish moduli",
+        "Yoqalar konstruksiyalari va amaliyoti moduli",
+        "Astarli liboslarda nostandart figuralar bilan ishlash",
+        "Klassik astarli kostyumlar bichish tikish texnologiyalari"
       ],
+      bonus: "Palto bichish tikish texnologiyalari"
     },
   ];
 
@@ -65,11 +74,11 @@ const CourseContent = () => {
         </div>
 
         {/* Course Levels */}
-        <div className="grid gap-10 max-w-7xl mx-auto [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
+        <div className="grid gap-6 max-w-7xl mx-auto [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
           {levels.map((level, index) => (
             <Card
               key={index}
-              className={`group w-full bg-[#FCF7F3] text-card-foreground border border-border rounded-xl shadow-sm hover:shadow-lg hover:bg-primary/5 transition-all duration-300 transform hover:-translate-y-2 ${levels.length === 3 && index === levels.length - 1 ? 'sm:col-span-2 md:col-span-1' : ''}`}
+              className={`group w-full bg-white text-card-foreground border border-border rounded-xl shadow-none hover:shadow-sm hover:bg-[#fffdfb] transition-all duration-300 ${levels.length === 3 && index === levels.length - 1 ? 'sm:col-span-2 md:col-span-1' : ''}`}
             >
               <CardHeader className={`${level.color} ${level.textColor} p-6`}>
                 <div className="flex items-center justify-between mb-2">
@@ -87,14 +96,26 @@ const CourseContent = () => {
                 <CardTitle className="text-xl">{level.title}</CardTitle>
               </CardHeader>
 
-              <CardContent className="p-6 space-y-3">
-                {level.modules.map((module, moduleIndex) => (
-                  <div key={moduleIndex} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-foreground">{module}</span>
+              <CardContent className="p-6 space-y-4">
+                <div className="space-y-3">
+                  {level.modules.map((module, moduleIndex) => (
+                    <div key={moduleIndex} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-foreground">{module}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {level.bonus && (
+                  <div className="flex items-start gap-3 pt-4 border-t border-border">
+                    <Sparkles className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-foreground font-semibold">
+                      {level.bonus}
+                    </span>
                   </div>
-                ))}
+                )}
               </CardContent>
+
             </Card>
           ))}
         </div>

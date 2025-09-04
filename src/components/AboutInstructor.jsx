@@ -22,64 +22,74 @@ const AboutInstructor = () => {
   ];
 
   const stats = [
-    { number: "200,000+", label: "Instagram izdoshlari" },
-    { number: "100,000+", label: "YouTube obunachilar" },
-    { number: "30,000+", label: "Telegram a'zolar" },
+    { number: "20,000+", label: "Instagram izdoshlari" },
+    { number: "1,000+", label: "YouTube obunachilar" },
+    { number: "5,000+", label: "Telegram a'zolar" },
     { number: "100%", label: "Natija kafolati" },
     { number: "15+", label: "Master-klasslar" },
     { number: "50+", label: "Moda loyihalari" },
   ];
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".instructor-image", {
+    const ctx = gsap.context((self) => {
+      const image = self.selector(".instructor-image");
+      const heading = self.selector(".instructor-heading");
+      const items = self.selector(".achievement-item");
+      const stats = self.selector(".stats-card");
+
+      gsap.from(image, {
         x: -50,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".instructor-image",
+          trigger: image,
           start: "top 80%",
+          markers: true, 
         },
       });
 
-      gsap.from(".instructor-heading", {
+      gsap.from(heading, {
         y: 50,
         opacity: 0,
         duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".instructor-heading",
+          trigger: heading,
           start: "top 85%",
+          markers: true, 
         },
       });
 
-      gsap.from(".achievement-item", {
+      gsap.from(items, {
         y: 30,
         opacity: 0,
         stagger: 0.15,
         duration: 0.6,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".achievement-item",
+          trigger: items,
           start: "top 90%",
+          markers: true, 
         },
       });
 
-      gsap.from(".stats-card", {
+      gsap.from(stats, {
         y: 40,
         opacity: 0,
         duration: 0.8,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".stats-card",
+          trigger: stats,
           start: "top 85%",
+          markers: true,
         },
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
 
   return (
     <section ref={sectionRef} id="about" className="py-20 bg-background">
@@ -118,8 +128,8 @@ const AboutInstructor = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              <div className="absolute -bottom-6 -right-6 bg-accent-red text-accent-red-foreground p-4 rounded-full shadow-xl">
-                <Award className="w-8 h-8" />
+              <div className="absolute -bottom-6 -right-6 bg-primary text-accent-red-foreground p-4 rounded-full shadow-xl">
+                <Award className="w-8 h-8 text-[#e2cb9c]" />
               </div>
             </div>
 

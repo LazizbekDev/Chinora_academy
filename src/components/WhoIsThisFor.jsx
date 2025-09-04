@@ -61,7 +61,7 @@ const WhoIsThisFor = () => {
           {targetAudience.map((item, index) => (
             <Card
               key={index}
-              className="min-w-[300px] flex-shrink-0 group bg-gradient-section cursor-pointer hover:bg-primary-foreground border border-foreground/20 rounded-lg p-4 transition-all duration-300 max-w-xs"
+              className="min-w-[300px] flex-shrink-0 group bg-white cursor-pointer hover:bg-primary-foreground border border-foreground/20 rounded-lg p-4 transition-all duration-300 max-w-xs"
             >
               <CardContent className="flex flex-col justify-between h-full p-0 pb-2">
                 <div className="space-y-4">

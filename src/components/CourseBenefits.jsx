@@ -56,14 +56,22 @@ const CourseBenefits = () => {
   ];
 
   useEffect(() => {
-    if (window.innerWidth >= 1024) { // faqat desktop uchun
-      const ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
+      let anim;
+
+      const setupScroll = () => {
+        // eski triggerlarni o‘chirib tashlaymiz
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        gsap.killTweensOf(scrollRef.current);
+
         const cards = scrollRef.current;
+        if (!cards) return;
+
         const totalWidth = cards.scrollWidth;
         const windowWidth = window.innerWidth;
         const scrollAmount = Math.max(0, totalWidth - windowWidth + 32);
 
-        gsap.to(cards, {
+        anim = gsap.to(cards, {
           x: -scrollAmount,
           ease: "none",
           scrollTrigger: {
@@ -75,10 +83,20 @@ const CourseBenefits = () => {
             invalidateOnRefresh: true,
           },
         });
-      }, sectionRef);
+      };
 
-      return () => ctx.revert();
-    }
+      setupScroll();
+
+      // resize bo‘lganda qayta setup
+      window.addEventListener("resize", setupScroll);
+
+      return () => {
+        if (anim) anim.scrollTrigger?.kill();
+        window.removeEventListener("resize", setupScroll);
+      };
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (

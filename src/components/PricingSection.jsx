@@ -8,59 +8,62 @@ const PricingSection = () => {
     {
       level: "Starter Pack",
       title: "Asosiy tikuvchilik ko‘nikmalari",
-      originalPrice: "1,200,000",
-      currentPrice: "990,000",
-      duration: "6 hafta",
+      originalPrice: "2,900,000",
+      currentPrice: "290,000",
+      duration: "8 hafta",
       color: "border-primary",
       popular: false,
       features: [
-        "Oddiy andoza chizish",
-        "Ko‘ylak va yubka tikish",
-        "Tikuv mashinasidan foydalanish",
-        "500+ asosiy texnika",
-        "Haftalik amaliy topshiriqlar",
-        "Telegram qo‘llab-quvvatlash guruhi",
-        "Sertifikat"
+        "Bolalar va kattalar ssos andazasi va uni qo'llash",
+        "Chok turlari",
+        "Yeng moduli",
+        "Yoqalar moduli",
+        "Modellashtirish va amaliy mashg'ulotlar",
+        "Murakkab bichimli liboslar bichish",
       ],
-      bonus: "Bonus: Professional mato tanlash bo‘yicha mini-guide"
+      bonus: "Bonus: Maqsad qo'yish va rivojlanish seminari!"
     },
     {
       level: "Fashion Designer",
       title: "Murakkab fason va dizayn",
-      originalPrice: "1,800,000",
-      currentPrice: "1,499,000",
-      duration: "8 hafta",
+      originalPrice: "6,500,000",
+      currentPrice: "4,999,000",
+      duration: "16 hafta",
       color: "border-primary",
       popular: true,
       features: [
-        "Murakkab fasonlar andozasi",
-        "Karset va noodatiy liboslar",
-        "Brend kiyimlari texnikasi",
-        "Amaliy fashion loyihalar",
-        "Haftalik mentor sessiyalari",
-        "Personal feedback",
-        "Professional sertifikat"
+        "Jahon standartidagi bazaviy asoslar konstruksiyasi va ulardan texnikas",
+        "Jahon standartida tikish texnologiyalari",
+        "Modellashtirish (ayollar ko'ylagi va bluzkalar)",
+        "Yeng mavzusi",
+        "Nostandarst qomatlar bilan ishlash",
+        "Oqshom liboslari. Drapirovka",
+        "Dizaynerlik. Eskiz chizish",
+        "Psixologik darslar",
+        "Marketing va brending asoslari",
       ],
-      bonus: "Bonus: Karset masterklass + brend libos andozalari"
+      bonus: "Bonus modul: Shaxsiy brending va ijtimoiy tarmoqlarda marketing"
     },
     {
       level: "Pro Master",
-      title: "Professional daraja va biznes",
-      originalPrice: "2,500,000",
-      currentPrice: "1,999,000",
+      title: "Professional darajaga chiqish",
+      originalPrice: "6,500,000",
+      currentPrice: "5,000,000",
       duration: "10 hafta",
       color: "border-primary",
       popular: false,
       features: [
-        "Mijoz uchun individual buyurtmalar",
-        "Fashion ko‘rgazmalarga tayyorlanish",
-        "Professional finishing texnikalari",
-        "Networking va brend yaratish",
-        "Portfolio to‘plash",
-        "Fashion biznes strategiyalari",
-        "Lifetime access"
+        "Myuller metodikasida ustki kiyimlar asosi moduli",
+        "Myuller metodikasida yubka va shim moduli",
+        "Yubka va shim amaliyotlari",
+        "Ustki kiyimlar uchun yeng moduli",
+        "Kostyum modellashtirish moduli",
+        "Palto modellashtirish moduli",
+        "Yoqalar konstruksiyalari va amaliyoti moduli",
+        "Astarli liboslarda nostandart figuralar bilan ishlash",
+        "Klassik astarli kostyumlar bichish tikish texnologiyalari"
       ],
-      bonus: "Bonus: Tikuvchilik biznesini boshlash bo‘yicha qo‘llanma"
+      bonus: "Palto bichish tikish texnologiyalari"
     },
   ];
 
@@ -105,59 +108,60 @@ const PricingSection = () => {
           {pricingPlans.map((plan, index) => (
             <Card
               key={index}
-              className={`relative group hover:shadow-course transition-all duration-300 transform hover:-translate-y-2 border-2 ${plan.popular
-                ? "bg-gradient-to-br from-card to-primary-light text-white"
-                : "bg-secondary text-foreground"
+              className={`relative group hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-transparent ${plan.popular
+                ? "bg-gradient-to-br from-primary to-primary-light text-white"
+                : "bg-white text-[hsl(var(--card-foreground))]"
                 }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-primary text-primary-foreground px-4 py-1">
+                  <Badge className="bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-md glow-effect">
                     Eng mashhur
                   </Badge>
                 </div>
               )}
 
-              <CardHeader className="text-center pb-4">
-                <Badge variant="outline" className="mx-auto mb-4 w-fit">
+              <CardHeader className="text-center pb-4 pt-8">
+                <Badge variant="outline" className={`mx-auto mb-4 w-fit cursor-pointer ${plan.popular ? 'bg-black/30 text-white border-white/50' : 'bg-primary/10 text-primary border-primary'}`}>
                   {plan.level}
                 </Badge>
-                <CardTitle className="text-xl mb-2">{plan.title}</CardTitle>
-                <div className="space-y-1">
-                  <div className="text-sm text-muted-foreground line-through">
+                <CardTitle className="text-2xl font-bold mb-3">{plan.title}</CardTitle>
+                <div className="space-y-2">
+                  <div className={`text-sm text-muted-foreground line-through opacity-70 ${plan.popular ? 'text-white/70' : 'text-muted-foreground'}`}>
                     {plan.originalPrice} so'm
                   </div>
-                  <div className="text-3xl font-bold text-primary">
+                  <div className={`text-4xl font-extrabold ${plan.popular ? 'text-[#FFE4E4]' : 'text-foreground'}`}>
                     {plan.currentPrice} so'm
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className={`text-sm font-medium ${plan.popular ? 'text-white/80' : 'text-muted-foreground'}`}>
                     {plan.duration} davomida
                   </div>
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-6">
-                <div className="space-y-3">
+              <CardContent className="space-y-6 p-6">
+                <div className="space-y-4">
                   {plan.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className={`text-sm ${ plan.popular ? 'text-[#ffe4e4]': 'text-muted-foreground'}`}>{feature}</span>
+                    <div key={featureIndex} className="flex items-start gap-4">
+                      <CheckCircle className={`w-5 h-5 ${plan.popular ? "text-primary-foreground" : "text-primary"} mt-1 flex-shrink-0`} />
+                      <span className={`text-base ${plan.popular ? 'text-[#FFE4E4]' : 'text-muted-foreground'}`}>{feature}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="p-4 bg-gradient-section rounded-lg border">
-                  <div className="text-sm font-medium text-primary mb-1">Bonus:</div>
-                  <div className="text-sm text-muted-foreground">{plan.bonus}</div>
+                <div className="p-5 bg-gradient-to-br from-primary/10 to-card rounded-lg border border-primary/20 relative overflow-hidden shine-effect">
+                  <div className="text-sm font-semibold text-primary mb-2">Bonus:</div>
+                  <div className="text-sm text-muted-foreground z-10 relative">{plan.bonus}</div>
                 </div>
 
                 <Button
-                  className="hero-btn mt-10 flex items-center gap-3 bg-primary hover:bg-primary-light transition-colors duration-300 text-primary-foreground font-semibold text-lg px-6 md:px-8 py-3 md:py-4 rounded-2xl group shadow-md w-full justify-between"
+                  className="hero-btn mt-8 flex items-center gap-4 bg-primary hover:bg-primary-light transition-all duration-300 text-primary-foreground font-bold text-lg px-6 py-3 rounded-xl shadow-lg w-full justify-center group"
                   variant={plan.popular ? "cta" : "hero"}
                   onClick={scrollToMatrixChoice}
                 >
-                  Kursni tanlash <span className="relative flex items-center justify-center w-6 h-6 rounded-full bg-primary-foreground text-primary transition-transform duration-300 group-hover:rotate-45">
-                    <Plus size={18} strokeWidth={2.5} />
+                  Kursni tanlash
+                  <span className="relative flex items-center justify-center w-7 h-7 rounded-full bg-primary-foreground text-primary transition-transform duration-300 group-hover:rotate-90">
+                    <Plus size={20} strokeWidth={2.5} />
                   </span>
                 </Button>
               </CardContent>
