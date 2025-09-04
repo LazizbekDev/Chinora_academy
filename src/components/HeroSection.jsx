@@ -44,6 +44,16 @@ const HeroSection = () => {
     return () => ctx.revert(); // cleanup
   }, []);
 
+  const handleScroll = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const yOffset = -80; // navbar balandligi (80px)
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -73,7 +83,7 @@ const HeroSection = () => {
           topishni boshlang!
         </p>
 
-        <button className="hero-btn mt-10 flex items-center gap-3 bg-primary hover:bg-primary-light transition-colors duration-300 text-primary-foreground font-semibold text-lg px-6 md:px-8 py-3 md:py-4 rounded-full group shadow-md">
+        <button onClick={() => handleScroll('course-content')} className="hero-btn mt-10 flex items-center gap-3 bg-primary hover:bg-primary-light transition-colors duration-300 text-primary-foreground font-semibold text-lg px-6 md:px-8 py-3 md:py-4 rounded-full group shadow-md">
           <span className="relative flex items-center justify-center w-6 h-6 rounded-full bg-primary-foreground text-primary transition-transform duration-300 group-hover:rotate-45">
             <Plus size={18} strokeWidth={2.5} />
           </span>
