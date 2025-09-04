@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Star, Shield, Clock, Plus } from "lucide-react";
+import { CheckCircle, Star, Shield, Clock, Plus, Copy } from "lucide-react";
+import { useState } from "react";
 
 const PricingSection = () => {
   const pricingPlans = [
@@ -92,11 +93,28 @@ const PricingSection = () => {
     }
   };
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const cardNumber = "9860 0000 0000 0000";
+
+  const handleRegisterClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCopyCardNumber = () => {
+    navigator.clipboard.writeText(cardNumber).then(() => {
+      alert("Karta raqami nusxalandi!");
+    });
+  };
+
   return (
-    <section id="pricing" className="py-20 bg-background">
+    <section id="pricing" className="py-20 bg-[hsl(var(--background))]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[hsl(var(--foreground))]">
             Sizning <span className="text-primary">investment</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -157,7 +175,7 @@ const PricingSection = () => {
                 <Button
                   className="hero-btn mt-8 flex items-center gap-4 bg-primary hover:bg-primary-light transition-all duration-300 text-primary-foreground font-bold text-lg px-6 py-3 rounded-xl shadow-lg w-full justify-center group"
                   variant={plan.popular ? "cta" : "hero"}
-                  onClick={scrollToMatrixChoice}
+                  onClick={handleRegisterClick}
                 >
                   Kursni tanlash
                   <span className="relative flex items-center justify-center w-7 h-7 rounded-full bg-primary-foreground text-primary transition-transform duration-300 group-hover:rotate-90">
@@ -169,6 +187,56 @@ const PricingSection = () => {
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+          onClick={handleCloseModal}
+        >
+          <div
+            className="bg-white rounded-xl p-6 w-full max-w-md mx-4 md:mx-auto shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-2xl font-bold text-foreground mb-4">
+              To'lovni amalga oshirish uchun karta raqamidan foydalaning:
+            </h2>
+            <div className="flex items-center gap-2 mb-4 cursor-pointer">
+              <div onClick={handleCopyCardNumber} className="border border-border w-full p-2 rounded-md bg-[hsl(var(--background))] text-foreground">
+                9860 2701 0121 4699
+              </div>
+              <button
+                onClick={handleCopyCardNumber}
+                className="text-primary hover:text-primary-light transition-colors"
+              >
+                <Copy className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="text-sm text-muted-foreground mb-4">Yusupdjanov Akbarjon</div>
+            <hr className="border-t border-border mb-4" />
+            <p className="text-sm text-muted-foreground mb-4">
+              To'lov chekini telegram orqali{" "}
+              <a href="https://t.me/J99887766" className="text-primary">
+                @J99887766
+              </a> ga yuboring. To'lov
+              o'tgandan so'ng 24 soat ichida sizning EMAlLingizga dostup
+              jo'natamiz.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              "Uzum Nasiya" orqali muddatli to'lov uchun telegramga yozing{" "}
+              <a href="https://t.me/J99887766" className="text-primary underline">
+                https://t.me/J99887766
+              </a>
+            </p>
+            <button
+              onClick={handleCloseModal}
+              className="mt-6 w-full bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary-light transition-colors"
+            >
+              Yopish
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

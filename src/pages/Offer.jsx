@@ -7,9 +7,11 @@ import {
     Users,
     Timer,
 } from "lucide-react";
+import Cleave from "cleave.js/react";
+import "cleave.js/dist/addons/cleave-phone.uz"; // ⚡ kerakli lib
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import instructorImage from "/images/hero.jpg"; // Instructor rasm import qilindi (avvalgi koddagi kabi)
+import instructorImage from "/images/hero.jpg";
 
 const nextTargetDate = () => {
     const now = new Date();
@@ -53,11 +55,31 @@ const useCountdown = (target) => {
 const Offer = () => {
     const target = useMemo(nextTargetDate, []);
     const { d, h, m, s, done } = useCountdown(target);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleRegisterClick = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const phone = form.phone.value;
+
+        console.log("Form submitted:", { name, phone });
+        // Add form submission logic here (e.g., API call)
+        handleCloseModal();
+    };
 
     return (
-        <main className="min-h-screen bg-background text-foreground">
+        <main className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
             {/* Top stripe */}
-            <div className="w-full bg-secondary border-b border-primary/20">
+            <div className="w-full bg-[hsl(var(--secondary))] border-b border-primary/20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 text-sm md:text-base flex items-center gap-3 justify-center">
                     <span className="text-primary font-semibold tracking-wide">BEPUL MASTERKLASS</span>
                     <span className="text-muted-foreground text-xs">— Tikuvchilik va dizaynerlikda professional yondashuv</span>
@@ -69,7 +91,7 @@ const Offer = () => {
                 <div className="grid md:grid-cols-5 gap-6 lg:gap-8 items-start">
                     {/* Left: content */}
                     <div className="md:col-span-3 space-y-6">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-tarsk text-foreground">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-tarsk text-[hsl(var(--foreground))]">
                             3 kunda <span className="text-primary">professional tikuvchilik</span> sirlarini oching
                         </h1>
 
@@ -79,7 +101,7 @@ const Offer = () => {
                             bularning barchasini ushbu bepul masterklassda bosqichma-bosqich o‘rganasiz.
                         </p>
 
-                        {/* Instructor Image - Hero bo'limiga qo'shildi, title va description o'rtasida */}
+                        {/* Instructor Image */}
                         <div className="relative rounded-2xl overflow-hidden max-w-md mx-auto md:mx-0">
                             <LazyLoadImage
                                 src={instructorImage}
@@ -87,7 +109,7 @@ const Offer = () => {
                                 className="w-full h-auto object-cover rounded-2xl"
                                 effect="blur"
                                 threshold={100}
-                                placeholderSrc={instructorImage} // Past sifatli placeholder (ixtiyoriy)
+                                placeholderSrc={instructorImage}
                             />
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
                                 <h3 className="text-lg font-bold text-white">Ibodullayeva Chinora</h3>
@@ -97,15 +119,15 @@ const Offer = () => {
 
                         {/* Chips */}
                         <div className="flex flex-wrap gap-3">
-                            <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2 text-sm border border-border text-secondary-foreground">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--secondary))] cursor-pointer px-4 py-2 text-sm border border-border text-[hsl(var(--secondary-foreground))]">
                                 <Calendar className="w-4 h-4 text-primary" />
                                 21–22–23 avgust
                             </span>
-                            <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2 text-sm border border-border text-secondary-foreground">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--secondary))] px-4 py-2 text-sm border border-border text-[hsl(var(--secondary-foreground))]">
                                 <Clock className="w-4 h-4 text-primary" />
                                 20:30
                             </span>
-                            <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2 text-sm border border-border text-secondary-foreground">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--secondary))] px-4 py-2 text-sm border border-border text-[hsl(var(--secondary-foreground))]">
                                 <Tag className="w-4 h-4 text-primary" />
                                 <span className="line-through text-muted-foreground">999 000 so‘m</span>
                                 <strong className="text-primary">BEPUL</strong>
@@ -123,10 +145,12 @@ const Offer = () => {
                             ].map((t, i) => (
                                 <div
                                     key={i}
-                                    className="group flex items-start gap-3 rounded-lg bg-primary p-4 border cursor-pointer border-border hover:bg-secondary hover:text-secondary-foreground transition-colors"
+                                    className="group flex items-start gap-3 rounded-lg bg-white p-4 border cursor-pointer border-border hover:bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] transition-colors"
                                 >
-                                    <CheckCircle2 className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0 group-hover:text-secondary-foreground" />
-                                    <p className="text-sm md:text-base text-primary-foreground group-hover:text-secondary-foreground">{t}</p>
+                                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0 text-[hsl(var(--secondary-foreground))]" />
+                                    <p className="text-sm md:text-base text-[hsl(var(--secondary-foreground))]">
+                                        {t}
+                                    </p>
                                 </div>
                             ))}
                         </div>
@@ -134,7 +158,7 @@ const Offer = () => {
 
                     {/* Right: sticky card */}
                     <aside className="md:col-span-2">
-                        <div className="sticky top-6 rounded-2xl bg-card border border-border shadow-sm overflow-hidden">
+                        <div className="sticky top-6 rounded-2xl bg-white border border-border shadow-sm overflow-hidden">
                             <div className="p-6 space-y-5">
                                 <div className="flex items-center gap-2 text-primary font-semibold">
                                     <Users className="w-5 h-5" />
@@ -142,13 +166,15 @@ const Offer = () => {
                                 </div>
 
                                 {/* Timer */}
-                                <div className="rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 p-4">
+                                <div className="rounded-lg bg-gradient-to-br from-primary/10 to-[hsl(var(--secondary))]/10 border border-primary/20 p-4">
                                     <div className="flex items-center gap-2 text-primary mb-2">
                                         <Timer className="w-4 h-4" />
                                         <span className="text-sm font-medium">Boshlanishiga:</span>
                                     </div>
                                     {done ? (
-                                        <p className="text-xl font-mono font-semibold text-primary">Efir boshlanmoqda…</p>
+                                        <p className="text-xl font-mono font-semibold text-primary">
+                                            Efir boshlanmoqda…
+                                        </p>
                                     ) : (
                                         <div className="grid grid-cols-4 gap-2 text-center font-mono">
                                             {[
@@ -159,9 +185,11 @@ const Offer = () => {
                                             ].map(({ value, label }, i) => (
                                                 <div
                                                     key={i}
-                                                    className="rounded-lg bg-background p-3 border border-border hover:bg-accent/10 transition-colors"
+                                                    className="rounded-lg bg-[hsl(var(--background))] p-3 border border-border hover:bg-accent/10 transition-colors"
                                                 >
-                                                    <div className="text-xl font-bold text-primary">{String(value).padStart(2, "0")}</div>
+                                                    <div className="text-xl font-bold text-primary">
+                                                        {String(value).padStart(2, "0")}
+                                                    </div>
                                                     <div className="text-xs text-muted-foreground">{label}</div>
                                                 </div>
                                             ))}
@@ -170,23 +198,25 @@ const Offer = () => {
                                 </div>
 
                                 {/* Price Row */}
-                                <div className="flex items-center justify-between rounded-lg bg-background p-4 border border-border">
+                                <div className="flex items-center justify-between rounded-lg bg-[hsl(var(--background))] p-4 border border-border">
                                     <div className="text-muted-foreground text-sm">Ishtirok narxi</div>
                                     <div className="text-right">
-                                        <div className="line-through text-muted-foreground text-sm">999 000 so‘m</div>
+                                        <div className="line-through text-muted-foreground text-sm">
+                                            999 000 so‘m
+                                        </div>
                                         <div className="text-lg font-bold text-primary">BEPUL</div>
                                     </div>
                                 </div>
 
                                 {/* CTA */}
-                                <a
-                                    href="#register"
+                                <button
+                                    onClick={handleRegisterClick}
                                     className="w-full inline-flex justify-center items-center rounded-full 
              bg-primary text-primary-foreground px-6 py-3 font-semibold 
              hover:bg-primary-light transition-colors shadow-md hover:shadow-lg"
                                 >
                                     Ro‘yxatdan o‘tish
-                                </a>
+                                </button>
 
                                 <p className="text-xs text-muted-foreground text-center">
                                     Ro‘yxatdan o‘tishdan so‘ng yopiq chatga taklif yuboramiz.
@@ -199,7 +229,7 @@ const Offer = () => {
 
             {/* Bottom info */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-                <div className="rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 p-6 md:p-8">
+                <div className="rounded-2xl bg-white border border-black/20 p-6 md:p-8">
                     <h3 className="text-xl md:text-2xl font-bold text-primary mb-3">
                         Nega aynan shu masterklass?
                     </h3>
@@ -208,6 +238,64 @@ const Offer = () => {
                     </p>
                 </div>
             </section>
+
+            {/* Modal */}
+            {isModalOpen && (
+                <div
+                    className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+                    onClick={handleCloseModal}
+                >
+                    <div
+                        className="bg-white rounded-xl p-6 w-full max-w-md mx-4 md:mx-auto shadow-lg"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <h2 className="text-2xl font-bold text-foreground mb-4">
+                            Ro‘yxatdan o‘tish
+                        </h2>
+                        <p className="text-sm text-muted-foreground mb-6">
+                            Pastdagi formani to‘ldirishingiz bilan yopiq kanalga qo‘shilasiz!
+                        </p>
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium text-foreground mb-1">
+                                    Ism
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Ismingizni kiriting"
+                                    name="name"
+                                    className="w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-foreground mb-1">
+                                    Telefon raqami
+                                </label>
+                                <Cleave
+                                    options={{
+                                        prefix: "+998",
+                                        blocks: [4, 2, 3, 2, 2], // +998 88 595 02 21
+                                        delimiters: [" ", " ", "-", "-"],
+                                        numericOnly: true,
+                                    }}
+                                    placeholder="+998 (__) ___-__-__"
+                                    className="w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                                    name="phone"
+                                    value={"+998"}
+                                    required
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                className="w-full bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary-light transition-colors"
+                            >
+                                Yuborish
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </main>
     );
 };
