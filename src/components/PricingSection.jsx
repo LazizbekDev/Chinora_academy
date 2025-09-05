@@ -72,7 +72,7 @@ const PricingSection = () => {
     },
   ];
 
-  const [isModalOpen, setIsModalOpen] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [chosenCourse, setChosenCourse] = useState('');
 
   const handleRegisterClick = (cardNumber) => {
