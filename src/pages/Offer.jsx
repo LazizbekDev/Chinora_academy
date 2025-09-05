@@ -65,14 +65,21 @@ const Offer = () => {
         setIsModalOpen(false);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const phone = form.phone.value;
 
-        console.log("Form submitted:", { name, phone });
-        // Add form submission logic here (e.g., API call)
+        await fetch(`https://api.telegram.org/bot6176575449:AAHX7eDxWUZrH1NjCpLD0Ij-f9eJUq6p_FA/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                chat_id: "1622899126",
+                text: `📥 Yangi ro‘yxatdan o‘tish:\n\n👤 Ism: ${name}\n📱 Telefon: ${phone}`,
+            }),
+        });
+
         handleCloseModal();
     };
 
