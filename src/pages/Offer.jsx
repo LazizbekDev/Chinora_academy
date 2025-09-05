@@ -16,8 +16,8 @@ import instructorImage from "/images/hero.jpg";
 const nextTargetDate = () => {
     const now = new Date();
     const year = now.getFullYear();
-    let month = 7; // 0-based: 7 = Avgust
-    const days = [21, 22, 23];
+    let month = 9; // 0-based: 9 = Oktyabr
+    const days = [5, 6, 7];
     const hour = 20;
     const minute = 30;
 
@@ -79,12 +79,17 @@ const Offer = () => {
     return (
         <main className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
             {/* Top stripe */}
-            <div className="w-full bg-[hsl(var(--secondary))] border-b border-primary/20">
+            <div className="w-full bg-primary border-b border-primary/20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 text-sm md:text-base flex items-center gap-3 justify-center">
-                    <span className="text-primary font-semibold tracking-wide">BEPUL MASTERKLASS</span>
-                    <span className="text-muted-foreground text-xs">— Tikuvchilik va dizaynerlikda professional yondashuv</span>
+                    <span className="text-primary-foreground font-semibold tracking-wide">
+                        BEPUL MASTERKLASS
+                    </span>
+                    <span className="text-primary-foreground/80 text-xs">
+                        — Tikuvchilik va dizaynerlikda professional yondashuv
+                    </span>
                 </div>
             </div>
+
 
             {/* Hero */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-10 md:pt-16">
@@ -119,15 +124,15 @@ const Offer = () => {
 
                         {/* Chips */}
                         <div className="flex flex-wrap gap-3">
-                            <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--secondary))] cursor-pointer px-4 py-2 text-sm border border-border text-[hsl(var(--secondary-foreground))]">
+                            <span className="inline-flex items-center gap-2 rounded-full cursor-pointer px-4 py-2 text-sm border border-border bg-primary/10 text-primary">
                                 <Calendar className="w-4 h-4 text-primary" />
-                                21–22–23 avgust
+                                5–6–7 oktyabr
                             </span>
-                            <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--secondary))] px-4 py-2 text-sm border border-border text-[hsl(var(--secondary-foreground))]">
+                            <span className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm border border-border bg-primary/10 text-primary">
                                 <Clock className="w-4 h-4 text-primary" />
                                 20:30
                             </span>
-                            <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--secondary))] px-4 py-2 text-sm border border-border text-[hsl(var(--secondary-foreground))]">
+                            <span className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm border border-border bg-primary/10 text-primary">
                                 <Tag className="w-4 h-4 text-primary" />
                                 <span className="line-through text-muted-foreground">999 000 so‘m</span>
                                 <strong className="text-primary">BEPUL</strong>
@@ -137,23 +142,25 @@ const Offer = () => {
                         {/* Bullets */}
                         <div className="grid sm:grid-cols-2 gap-4">
                             {[
-                                "0 dan andoza chizish (amaliy)",
-                                "Noodatiy fasonlar yaratish",
-                                "Zamonaviy karset texnikalari",
-                                "Brend uslubida libos tikish",
-                                "Professional metodika bilan ishlash",
+                                "Professional Myuller metodikasi asos andazasini 0 dan qurishni",
+                                "Asos andazadan to'g'ri foydalanish sirlarini",
+                                "Avtorlik \"Anor\" nomli assimetriya fasonli libosimni modellashtirish sirlarini",
+                                "Mijozlar oqimini oshirish va qimmat narx qo‘yish sirlarini",
+                                "Tikuvchilikda daromadingizni 5x gacha oshirish sirlarini",
                             ].map((t, i) => (
                                 <div
                                     key={i}
-                                    className="group flex items-start gap-3 rounded-lg bg-white p-4 border cursor-pointer border-border hover:bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] transition-colors"
+                                    className="group flex items-start gap-3 rounded-lg bg-white p-4 border border-border 
+                 hover:bg-primary/5 hover:border-primary/30 transition-colors cursor-pointer"
                                 >
-                                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0 text-[hsl(var(--secondary-foreground))]" />
-                                    <p className="text-sm md:text-base text-[hsl(var(--secondary-foreground))]">
+                                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0 text-primary" />
+                                    <p className="text-sm md:text-base text-foreground group-hover:text-primary transition-colors">
                                         {t}
                                     </p>
                                 </div>
                             ))}
                         </div>
+
                     </div>
 
                     {/* Right: sticky card */}

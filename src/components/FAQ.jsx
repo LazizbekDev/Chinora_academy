@@ -63,29 +63,29 @@ const FAQ = () => {
             </div>
             <div>
               <a
-                href="tel:+998901234567"
+                href="tel:+998335222682"
                 className="flex items-center justify-center gap-2 text-primary font-semibold hover:underline"
               >
-                <Phone className="w-5 h-5" /> +998 90 123 45 67
+                <Phone className="w-5 h-5" /> +998 33 522 26 82
               </a>
             </div>
             <div>
               <a
-                href="https://t.me/chinora_support"
+                href="https://t.me/chinora_academy"
                 target="_blank"
                 className="flex items-center justify-center gap-2 text-primary font-semibold hover:underline"
               >
-                <Send className="w-5 h-5" /> @chinora_support
+                <Send className="w-5 h-5" /> @chinora_academy
               </a>
             </div>
-            <div>
+            {/* <div>
               <a
                 href="mailto:info@chinora.uz"
                 className="flex items-center justify-center gap-2 text-primary font-semibold hover:underline"
               >
                 <Mail className="w-5 h-5" /> info@chinora.uz
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

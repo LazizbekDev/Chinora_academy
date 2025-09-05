@@ -16,7 +16,7 @@ const AboutInstructor = () => {
   const achievements = [
     { icon: <Users className="w-5 h-5" />, text: "500+ muvaffaqiyatli shogird" },
     { icon: <Globe className="w-5 h-5" />, text: "8 yillik tajriba" },
-    { icon: <Award className="w-5 h-5" />, text: "Dimlom sertifikatlar" },
+    { icon: <Award className="w-5 h-5" />, text: "Diplom sertifikatlar" },
     { icon: <CheckCircle className="w-5 h-5" />, text: "98% muvaffaqiyat darajasi" },
     { icon: <GraduationCap className="w-5 h-5" />, text: "Professional jahon standartiga mos metodika" },
   ];

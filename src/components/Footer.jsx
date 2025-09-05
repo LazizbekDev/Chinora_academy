@@ -1,4 +1,4 @@
-import { Phone, Send, Mail, Users, Clock, Book, Sparkles, MapPin, Info } from "lucide-react";
+import { Phone, Send, Mail, Users, Clock, Book, Sparkles, MapPin, Info, Instagram, Youtube, User } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -45,19 +45,47 @@ const Footer = () => {
 
           {/* Column 3 - Useful Links */}
           <div className="space-y-3">
-            <h4 className="text-lg font-semibold text-primary">Foydali havolalar</h4>
+            <h4 className="text-lg font-semibold text-primary">Bizni kuzatib boring</h4>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2">
-                <Info className="w-4 h-4 text-primary" /> Kurslar
+              <li>
+                <a
+                  href="https://www.instagram.com/chinora_fashion_academy?igsh=NmZhdXR3NGJsMmdy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-primary transition"
+                >
+                  <Instagram className="w-4 h-4 text-primary" /> Instagram
+                </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Info className="w-4 h-4 text-primary" /> Tez-tez so‘raladigan savollar
+              <li>
+                <a
+                  href="https://t.me/+ZlMsl6Ool8k4Zjdi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-primary transition"
+                >
+                  <Send className="w-4 h-4 text-primary" /> Telegram
+                </a>
               </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-primary" /> Akademiya manzili
+              <li>
+                <a
+                  href="https://youtube.com/@chinora_academy_ad?si=HEfAEVD4VtNOnxdW"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-primary transition"
+                >
+                  <Youtube className="w-4 h-4 text-primary" /> YouTube
+                </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Info className="w-4 h-4 text-primary" /> Blog
+              <li>
+                <a
+                  href="https://t.me/chinora_academy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-primary transition"
+                >
+                  <User className="w-4 h-4 text-primary" /> Admin
+                </a>
               </li>
             </ul>
           </div>
@@ -72,9 +100,9 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <Send className="w-4 h-4 text-primary" /> @chinora_support
               </li>
-              <li className="flex items-center gap-2">
+              {/* <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary" /> info@chinora.uz
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

@@ -1,8 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Star, Shield, Clock, Plus, Copy } from "lucide-react";
+import { CheckCircle, Plus, Copy } from "lucide-react";
 import { useState } from "react";
+import { set } from "react-hook-form";
 
 const PricingSection = () => {
   const pricingPlans = [
@@ -10,10 +11,11 @@ const PricingSection = () => {
       level: "Starter Pack",
       title: "Asosiy tikuvchilik ko‘nikmalari",
       originalPrice: "2,900,000",
-      currentPrice: "290,000",
+      currentPrice: "299,000",
       duration: "8 hafta",
       color: "border-primary",
       popular: false,
+      cardNumber: "5614 6814 2795 9931",
       features: [
         "Bolalar va kattalar ssos andazasi va uni qo'llash",
         "Chok turlari",
@@ -32,6 +34,7 @@ const PricingSection = () => {
       duration: "16 hafta",
       color: "border-primary",
       popular: true,
+      cardNumber: "8600 5704 0753 9039",
       features: [
         "Jahon standartidagi bazaviy asoslar konstruksiyasi va ulardan texnikas",
         "Jahon standartida tikish texnologiyalari",
@@ -53,6 +56,7 @@ const PricingSection = () => {
       duration: "10 hafta",
       color: "border-primary",
       popular: false,
+      cardNumber: "8600 5704 0753 9039",
       features: [
         "Myuller metodikasida ustki kiyimlar asosi moduli",
         "Myuller metodikasida yubka va shim moduli",
@@ -68,36 +72,12 @@ const PricingSection = () => {
     },
   ];
 
-  const guarantees = [
-    {
-      icon: <Shield className="w-5 h-5" />,
-      title: "Sifat kafolati",
-      description: "Har bir dars professional metodikaga asoslangan"
-    },
-    {
-      icon: <Clock className="w-5 h-5" />,
-      title: "Moslashuvchan jadval",
-      description: "Sizning vaqtingizga mos tarzda qatnashasiz"
-    },
-    {
-      icon: <Star className="w-5 h-5" />,
-      title: "Natija kafolati",
-      description: "Kursni tugatgach real liboslarni tikib chiqasiz"
-    },
-  ];
+  const [isModalOpen, setIsModalOpen] = useState({});
+  const [chosenCourse, setChosenCourse] = useState('');
 
-  const scrollToMatrixChoice = () => {
-    const element = document.getElementById('matrix-choice');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const cardNumber = "9860 0000 0000 0000";
-
-  const handleRegisterClick = () => {
+  const handleRegisterClick = (cardNumber) => {
     setIsModalOpen(true);
+    setChosenCourse(cardNumber);
   };
 
   const handleCloseModal = () => {
@@ -105,8 +85,8 @@ const PricingSection = () => {
   };
 
   const handleCopyCardNumber = () => {
-    navigator.clipboard.writeText(cardNumber).then(() => {
-      alert("Karta raqami nusxalandi!");
+    navigator.clipboard.writeText(chosenCourse).then(() => {
+      console.log("Card number copied to clipboard", chosenCourse);
     });
   };
 
@@ -168,7 +148,7 @@ const PricingSection = () => {
                 </div>
 
                 <Button
-                  onClick={handleRegisterClick}
+                  onClick={() => handleRegisterClick(plan.cardNumber)}
                   className={`relative mt-8 w-full flex items-center justify-center gap-4 
                     rounded-lg px-6 py-3 font-bold text-lg leading-tight 
                     transition-all duration-300 shadow-md hover:shadow-lg 
@@ -211,7 +191,7 @@ const PricingSection = () => {
             </h2>
             <div className="flex items-center gap-2 mb-4 cursor-pointer">
               <div onClick={handleCopyCardNumber} className="border border-border w-full p-2 rounded-md bg-[hsl(var(--background))] text-foreground">
-                9860 2701 0121 4699
+                {chosenCourse}
               </div>
               <button
                 onClick={handleCopyCardNumber}
@@ -222,20 +202,19 @@ const PricingSection = () => {
             </div>
             <div className="text-sm text-muted-foreground mb-4">Ibodullayeva Chinora</div>
             <hr className="border-t border-border mb-4" />
-            <p className="text-sm text-muted-foreground mb-4">
-              To'lov chekini telegram orqali{" "}
-              <a href="https://t.me/J99887766" className="text-primary">
-                @J99887766
-              </a> ga yuboring. To'lov
-              o'tgandan so'ng 24 soat ichida sizning EMAlLingizga dostup
-              jo'natamiz.
-            </p>
             <p className="text-sm text-muted-foreground">
+              To'lov chekini telegram orqali{" "}
+              <a href="https://t.me/chinora_academy" className="text-primary">
+                @chinora_academy
+              </a> ga yuboring. To'lov
+              o'tgandan so'ng 24 soat ichida telegram profilingizga bog'lanamiz.
+            </p>
+            {/* <p className="text-sm text-muted-foreground">
               "Uzum Nasiya" orqali muddatli to'lov uchun telegramga yozing{" "}
               <a href="https://t.me/J99887766" className="text-primary underline">
                 https://t.me/J99887766
               </a>
-            </p>
+            </p> */}
             <button
               onClick={handleCloseModal}
               className="mt-6 w-full bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary-light transition-colors"
