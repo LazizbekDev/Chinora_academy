@@ -94,12 +94,19 @@ const Footer = () => {
           <div className="space-y-3">
             <h4 className="text-lg font-semibold text-primary">Aloqa</h4>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-primary" /> +998 90 123 45 67
-              </li>
-              <li className="flex items-center gap-2">
-                <Send className="w-4 h-4 text-primary" /> @chinora_support
-              </li>
+              <a
+                href="tel:+998335222682"
+                className="flex items-center gap-2 hover:underline"
+              >
+                <Phone className="w-4 h-4 text-primary" /> +998 33 522 26 82
+              </a>
+              <a
+                href="https://t.me/chinora_academy"
+                target="_blank"
+                className="flex items-center gap-2 hover:underline"
+              >
+                <Send className="w-4 h-4 text-primary" /> @chinora_academy
+              </a>
               {/* <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary" /> info@chinora.uz
               </li> */}

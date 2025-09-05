@@ -8,10 +8,6 @@ import {
   ShieldCheck,
   Clock,
   CheckCircle,
-  CreditCard,
-  Phone,
-  Send,
-  Mail,
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -80,6 +76,7 @@ const CourseBenefits = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             pin: true,
+            pinSpacing: false, // pin bo‘lganda bo‘sh joy tashlamasin
             scrub: 1,
             start: "top top",
             end: () => `+=${scrollAmount}`,
