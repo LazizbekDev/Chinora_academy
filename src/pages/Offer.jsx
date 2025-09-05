@@ -71,11 +71,11 @@ const Offer = () => {
         const name = form.name.value;
         const phone = form.phone.value;
 
-        await fetch(`https://api.telegram.org/bot6176575449:AAHX7eDxWUZrH1NjCpLD0Ij-f9eJUq6p_FA/sendMessage`, {
+        await fetch(`https://api.telegram.org/bot${import.meta.env.VITE_BOT_TOKEN}/sendMessage`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                chat_id: "1622899126",
+                chat_id: import.meta.env.VITE_CHAT_ID,
                 text: `📥 Yangi ro‘yxatdan o‘tish:\n\n👤 Ism: ${name}\n📱 Telefon: ${phone}`,
             }),
         });
