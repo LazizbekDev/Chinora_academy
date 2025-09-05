@@ -53,45 +53,23 @@ const CourseBenefits = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      let anim;
+      const cards = scrollRef.current;
+      const totalWidth = cards.scrollWidth;
+      const windowWidth = window.innerWidth;
+      const scrollAmount = Math.max(0, totalWidth - windowWidth + 42); // Add padding buffer
 
-      const setupScroll = () => {
-        // ❌ Buni ishlatmaymiz:
-        // ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-
-        // Faqat shu component ichidagini kill qilamiz
-        anim?.scrollTrigger?.kill();
-        gsap.killTweensOf(scrollRef.current);
-
-        const cards = scrollRef.current;
-        if (!cards) return;
-
-        const totalWidth = cards.scrollWidth;
-        const windowWidth = window.innerWidth;
-        const scrollAmount = Math.max(0, totalWidth - windowWidth + 32);
-
-        anim = gsap.to(cards, {
-          x: -scrollAmount,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            pin: true,
-            pinSpacing: false, // pin bo‘lganda bo‘sh joy tashlamasin
-            scrub: 1,
-            start: "top top",
-            end: () => `+=${scrollAmount}`,
-            invalidateOnRefresh: true,
-          },
-        });
-      };
-
-      setupScroll();
-      window.addEventListener("resize", setupScroll);
-
-      return () => {
-        anim?.scrollTrigger?.kill();
-        window.removeEventListener("resize", setupScroll);
-      };
+      gsap.to(cards, {
+        x: -scrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          pin: true,
+          scrub: 1,
+          start: "top top",
+          end: () => `+=${scrollAmount}`,
+          invalidateOnRefresh: true, // Recalculate on resize
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
