@@ -10,6 +10,7 @@ import {
 import Cleave from "cleave.js/react";
 import "cleave.js/dist/addons/cleave-phone.uz"; // ⚡ kerakli lib
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { toast } from "sonner";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import instructorImage from "/images/hero.jpg";
 
@@ -56,6 +57,7 @@ const Offer = () => {
     const target = useMemo(nextTargetDate, []);
     const { d, h, m, s, done } = useCountdown(target);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleRegisterClick = () => {
         setIsModalOpen(true);
@@ -71,20 +73,47 @@ const Offer = () => {
         const name = form.name.value;
         const phone = form.phone.value;
 
-        await fetch(`https://api.telegram.org/bot${import.meta.env.VITE_BOT_TOKEN}/sendMessage`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                chat_id: import.meta.env.VITE_CHAT_ID,
-                text: `📥 Yangi ro‘yxatdan o‘tish:\n\n👤 Ism: ${name}\n📱 Telefon: ${phone}`,
-            }),
-        });
+        try {
+            setIsLoading(true);
 
-        handleCloseModal();
+            const res = await fetch(`https://api.telegram.org/bot${import.meta.env.VITE_BOT_TOKEN}/sendMessage`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    chat_id: import.meta.env.VITE_CHAT_ID,
+                    text: `📥 Yangi ro‘yxatdan o‘tish:\n\n👤 Ism: ${name}\n📱 Telefon: <code>${phone}</code>`,
+                    parse_mode: "HTML", // ✅ HTML format yoqildi
+                }),
+            });
+
+            if (!res.ok) throw new Error("Telegram API xatosi");
+
+            toast.success("Ro‘yxatdan o‘tish muvaffaqiyatli!");
+            handleCloseModal();
+        } catch (err) {
+            console.error(err);
+            toast.error("Xatolik yuz berdi. Qaytadan urinib ko‘ring.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
         <main className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
+
+            {/* 🔄 Loader */}
+            {isLoading && (
+                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[100]">
+                    <div className="w-64 bg-white rounded-xl p-6 shadow-lg">
+                        <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full w-full bg-primary animate-pulse"></div>
+                        </div>
+                        <p className="mt-3 text-center text-sm font-medium text-foreground">
+                            Ma’lumot yuborilmoqda...
+                        </p>
+                    </div>
+                </div>
+            )}
             {/* Top stripe */}
             <div className="w-full bg-primary border-b border-primary/20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 text-sm md:text-base flex items-center gap-3 justify-center">
@@ -280,6 +309,8 @@ const Offer = () => {
                                     name="name"
                                     className="w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                                     required
+                                    onInvalid={(e) => e.target.setCustomValidity("Ismingizni kiriting")}
+                                    onInput={(e) => e.target.setCustomValidity("")}
                                 />
                             </div>
                             <div>
@@ -296,8 +327,10 @@ const Offer = () => {
                                     placeholder="+998 (__) ___-__-__"
                                     className="w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                                     name="phone"
-                                    value={"+998"}
                                     required
+                                    onInvalid={(e) => e.target.setCustomValidity("📱 Telefon raqamingizni kiriting")}
+                                    onInput={(e) => e.target.setCustomValidity("")}
+                                    pattern="\+998 \d{2} \d{3}-\d{2}-\d{2}"
                                 />
                             </div>
                             <button
