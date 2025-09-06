@@ -3,7 +3,6 @@ import {
   Calendar,
   Clock,
   Tag,
-  CheckCircle2,
   Users,
   Timer,
 } from "lucide-react";

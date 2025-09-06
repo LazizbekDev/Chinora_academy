@@ -58,9 +58,12 @@ const Offer = () => {
     const { d, h, m, s, done } = useCountdown(target);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
 
     const handleRegisterClick = () => {
         setIsModalOpen(true);
+        setIsSubmitted(false); // 🔑 qo‘shiladi
     };
 
     const handleCloseModal = () => {
@@ -89,7 +92,7 @@ const Offer = () => {
             if (!res.ok) throw new Error("Telegram API xatosi");
 
             toast.success("Ro‘yxatdan o‘tish muvaffaqiyatli!");
-            handleCloseModal();
+            setIsSubmitted(true); // 🔑 qo‘shiladi (modal yopilmaydi)
         } catch (err) {
             console.error(err);
             toast.error("Xatolik yuz berdi. Qaytadan urinib ko‘ring.");
@@ -292,54 +295,73 @@ const Offer = () => {
                         className="bg-white rounded-xl p-6 w-full max-w-md mx-4 md:mx-auto shadow-lg"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <h2 className="text-2xl font-bold text-foreground mb-4">
-                            Ro‘yxatdan o‘tish
-                        </h2>
-                        <p className="text-sm text-muted-foreground mb-6">
-                            Pastdagi formani to‘ldirishingiz bilan yopiq kanalga qo‘shilasiz!
-                        </p>
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-foreground mb-1">
-                                    Ism
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Ismingizni kiriting"
-                                    name="name"
-                                    className="w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                                    required
-                                    onInvalid={(e) => e.target.setCustomValidity("Ismingizni kiriting")}
-                                    onInput={(e) => e.target.setCustomValidity("")}
-                                />
+                        {!isSubmitted ? (
+                            <>
+                                <h2 className="text-2xl font-bold text-foreground mb-4">
+                                    Ro‘yxatdan o‘tish
+                                </h2>
+                                <p className="text-sm text-muted-foreground mb-6">
+                                    Pastdagi formani to‘ldirishingiz bilan yopiq kanalga qo‘shilasiz!
+                                </p>
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-foreground mb-1">
+                                            Ism
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="Ismingizni kiriting"
+                                            name="name"
+                                            className="w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                                            required
+                                            onInvalid={(e) => e.target.setCustomValidity("Ismingizni kiriting")}
+                                            onInput={(e) => e.target.setCustomValidity("")}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-foreground mb-1">
+                                            Telefon raqami
+                                        </label>
+                                        <Cleave
+                                            options={{
+                                                prefix: "+998",
+                                                blocks: [4, 2, 3, 2, 2], // +998 88 595 02 21
+                                                delimiters: [" ", " ", "-", "-"],
+                                                numericOnly: true,
+                                            }}
+                                            placeholder="+998 (__) ___-__-__"
+                                            className="w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                                            name="phone"
+                                            required
+                                            onInvalid={(e) => e.target.setCustomValidity("📱 Telefon raqamingizni kiriting")}
+                                            onInput={(e) => e.target.setCustomValidity("")}
+                                            pattern="\+998 \d{2} \d{3}-\d{2}-\d{2}"
+                                        />
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        className="w-full bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary-light transition-colors"
+                                    >
+                                        Yuborish
+                                    </button>
+                                </form>
+                            </>
+                        ) : (
+                            <div className="text-center space-y-4">
+                                <h2 className="text-2xl font-bold">✅ Ro‘yxatdan o‘tish muvaffaqiyatli!</h2>
+                                <p className="text-sm text-muted-foreground">
+                                    Endi yopiq Telegram kanalimizga qo‘shiling:
+                                </p>
+                                <a
+                                    href="https://t.me/+ZlMsl6Ool8k4Zjdi" // 🔑 kanal linkini shu yerga qo‘yasan
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-block w-full bg-primary text-white font-semibold px-4 py-2 rounded-md hover:bg-primary-light transition-colors"
+                                >
+                                    Telegram kanalga qo‘shilish
+                                </a>
                             </div>
-                            <div>
-                                <label className="block text-sm font-medium text-foreground mb-1">
-                                    Telefon raqami
-                                </label>
-                                <Cleave
-                                    options={{
-                                        prefix: "+998",
-                                        blocks: [4, 2, 3, 2, 2], // +998 88 595 02 21
-                                        delimiters: [" ", " ", "-", "-"],
-                                        numericOnly: true,
-                                    }}
-                                    placeholder="+998 (__) ___-__-__"
-                                    className="w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                                    name="phone"
-                                    required
-                                    onInvalid={(e) => e.target.setCustomValidity("📱 Telefon raqamingizni kiriting")}
-                                    onInput={(e) => e.target.setCustomValidity("")}
-                                    pattern="\+998 \d{2} \d{3}-\d{2}-\d{2}"
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="w-full bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary-light transition-colors"
-                            >
-                                Yuborish
-                            </button>
-                        </form>
+                        )}
                     </div>
                 </div>
             )}
