@@ -138,7 +138,7 @@ const Offer = () => {
 
                         <p className="text-base sm:text-lg text-muted-foreground max-w-prose leading-relaxed">
                             Hisob-kitobli asos andozani <span className="font-semibold text-primary">0 dan</span> chizish,
-                            noodatiy fasonlar, zamonaviy karset texnologiyalari va brend uslubida libos tikish —
+                            noodatiy fasonlar, modellashtirish sirlari va brend uslubida libos tikish —
                             bularning barchasini ushbu bepul masterklassda bosqichma-bosqich o‘rganasiz.
                         </p>
 
