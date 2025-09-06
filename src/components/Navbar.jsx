@@ -60,22 +60,17 @@ const Navbar = () => {
             ))}
 
             {/* START DATE badge */}
-            <a href="#" className="flex items-center space-x-2 px-3 py-1 rounded-md">
-              <div className="flex items-center space-x-2">
-                <span className="flex items-center space-x-1">
-                  <span
-                    className={`w-3 h-3 rounded-full ${isScrolled ? "bg-secondary" : "bg-primary"
-                      }`}
-                  />
-                  <span
-                    className={`font-semibold ${isScrolled ? "text-secondary" : "text-[hsl(var(--secondary-foreground))]"
-                      }`}
-                  >
-                    Start
-                  </span>
-                </span>
-                <span className="text-[#C7A27C] font-medium">1 July</span>
-              </div>
+            <a
+              href="#"
+              className="flex items-center space-x-2 px-3 py-1 rounded-full border border-[#C7A27C]/50 bg-[#C7A27C]/5 hover:bg-[#C7A27C]/10 transition"
+            >
+              <span
+                className={`font-semibold text-sm ${isScrolled ? "text-secondary" : "text-[hsl(var(--secondary-foreground))]"
+                  }`}
+              >
+                Start:
+              </span>
+              <span className="text-[#C7A27C] font-medium text-sm">05 Oct</span>
             </a>
           </div>
 
@@ -120,7 +115,7 @@ const Navbar = () => {
             <span className="flex items-center space-x-2">
               <span className="w-3 h-3 rounded-full bg-[#C7A27C]" />
               <span className="font-semibold">Start</span>
-              <span className="text-[#C7A27C]">1 July</span>
+              <span className="text-[#C7A27C]">05 Oct</span>
             </span>
           </div>
 

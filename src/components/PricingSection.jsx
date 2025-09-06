@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Plus, Copy } from "lucide-react";
 import { useState } from "react";
 import { set } from "react-hook-form";
+import { toast } from "sonner";
 
 const PricingSection = () => {
   const pricingPlans = [
@@ -87,6 +88,7 @@ const PricingSection = () => {
   const handleCopyCardNumber = () => {
     navigator.clipboard.writeText(chosenCourse).then(() => {
       console.log("Card number copied to clipboard", chosenCourse);
+      toast.success("Karta raqami nusxalandi!");
     });
   };
 
