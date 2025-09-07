@@ -6,18 +6,26 @@ const NotFound = () => {
 
   useEffect(() => {
     console.error(
-      "404 Error: User attempted to access non-existent route:",
+      "404 Xato: Foydalanuvchi mavjud bo‘lmagan sahifaga kirdi:",
       location.pathname
     );
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
+    <div className="min-h-screen flex items-center justify-center bg-[#FCF7F3] text-[#2E1F26]">
+      <div className="text-center max-w-md px-6">
+        <h1 className="text-6xl font-bold text-[#C7A27C] mb-4">404</h1>
+        <p className="text-xl font-serif mb-3">Oops! Sahifa topilmadi</p>
+        <p className="text-gray-600 mb-6">
+          Siz qidirayotgan manzil mavjud emas yoki o‘chirib yuborilgan bo‘lishi mumkin.
+        </p>
+        <a
+          href="/"
+          className="inline-flex items-center justify-center rounded-full 
+          bg-[#C7A27C] text-[#2E1F26] px-6 py-3 font-semibold 
+          shadow-lg hover:shadow-xl hover:bg-[#b08f67] transition"
+        >
+          Bosh sahifaga qaytish
         </a>
       </div>
     </div>

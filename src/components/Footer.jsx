@@ -2,7 +2,7 @@ import { Phone, Send, Mail, Users, Clock, Book, Sparkles, MapPin, Info, Instagra
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-[#E4DACD] to-[#F1EAE3] text-foreground py-16">
+    <footer className="bg-gradient-to-b from-[#E4DACD] to-[#F1EAE3] text-foreground pt-16 pb-6">
       <div className="container mx-auto px-6">
         {/* Title Section */}
         <div className="text-center mb-12">
@@ -117,6 +117,18 @@ const Footer = () => {
         {/* Subfooter */}
         <div className="border-t border-muted pt-6 text-center text-sm text-muted-foreground">
           © {new Date().getFullYear()} CHINORA FASHION ACADEMY. Barcha huquqlar himoyalangan.
+
+          <div className="mt-2 text-xs">
+            <span className="opacity-70">Developed with ❤️ by </span>
+            <a
+              href="https://t.me/ideazona"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline font-medium"
+            >
+              Laziz
+            </a>
+          </div>
         </div>
       </div>
     </footer>
