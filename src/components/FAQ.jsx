@@ -51,7 +51,7 @@ const FAQ = () => {
 
         {/* Payment & contacts */}
         <div className="container mx-auto px-6 mt-16 text-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center justify-center gap-2 text-primary font-semibold">
                 <CreditCard className="w-5 h-5" />
