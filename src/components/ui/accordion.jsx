@@ -27,7 +27,7 @@ const AccordionTrigger = React.forwardRef(({ className, children, ...props }, re
       <span>{children}</span>
       <span
         className={cn(
-          "ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background transition-all",
+          "ml-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-background transition-all",
           "group-hover:bg-transparent group-hover:text-primary "
         )}
       >
