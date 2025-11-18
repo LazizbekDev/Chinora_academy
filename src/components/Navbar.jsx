@@ -115,7 +115,7 @@ const Navbar = () => {
             <span className="flex items-center space-x-2">
               <span className="w-3 h-3 rounded-full bg-[#C7A27C]" />
               <span className="font-semibold">Start</span>
-              <span className="text-[#C7A27C]">05 Oct</span>
+              <span className="text-[#C7A27C]">28 Nov</span>
             </span>
           </div>
 
