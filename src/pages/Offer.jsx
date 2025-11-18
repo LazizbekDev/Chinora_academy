@@ -165,7 +165,7 @@ const Offer = () => {
                         <div className="flex flex-wrap gap-3">
                             <span className="inline-flex items-center gap-2 rounded-full cursor-pointer px-4 py-2 text-sm border border-border bg-primary/10 text-primary">
                                 <Calendar className="w-4 h-4 text-primary" />
-                                5–6–7 oktyabr
+                                28–29–30 noyabr
                             </span>
                             <span className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm border border-border bg-primary/10 text-primary">
                                 <Clock className="w-4 h-4 text-primary" />

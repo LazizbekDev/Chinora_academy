@@ -70,7 +70,7 @@ const Navbar = () => {
               >
                 Start:
               </span>
-              <span className="text-[#C7A27C] font-medium text-sm">05 Oct</span>
+              <span className="text-[#C7A27C] font-medium text-sm">28 Nov</span>
             </a>
           </div>
 
