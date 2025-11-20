@@ -17,8 +17,8 @@ import instructorImage from "/images/hero.jpg";
 const nextTargetDate = () => {
     const now = new Date();
     const year = now.getFullYear();
-    let month = 9; // 0-based: 9 = Oktyabr
-    const days = [5, 6, 7];
+    let month = 10; // 0-based: 9 = Oktyabr
+    const days = [28, 29, 30];
     const hour = 20;
     const minute = 30;
 
