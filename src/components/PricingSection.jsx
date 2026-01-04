@@ -12,7 +12,7 @@ const PricingSection = () => {
       level: "Starter Pack",
       title: "Asosiy tikuvchilik ko‘nikmalari",
       originalPrice: "2,900,000",
-      currentPrice: "299,000",
+      currentPrice: "499,000",
       duration: "8 hafta",
       color: "border-primary",
       popular: false,

@@ -23,7 +23,7 @@ const CourseContent = () => {
           ]
         },
         {
-          title: "Chok turlari",
+          title: "Chok va cho'ntak turlari",
           subModules: []
         },
         {

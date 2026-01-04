@@ -63,10 +63,10 @@ const FAQ = () => {
             </div>
             <div>
               <a
-                href="tel:+998335222681"
+                href="tel:+998338055505"
                 className="flex items-center justify-center gap-2 text-primary font-semibold hover:underline"
               >
-                <Phone className="w-5 h-5" /> +998 33 522 26 81
+                <Phone className="w-5 h-5" /> +998 33 805 26 81
               </a>
             </div>
             <div>

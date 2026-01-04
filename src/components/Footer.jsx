@@ -95,10 +95,10 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-primary">Aloqa</h4>
             <ul className="space-y-2">
               <a
-                href="tel:+998335222681"
+                href="tel:+998338055505"
                 className="flex items-center gap-2 hover:underline"
               >
-                <Phone className="w-4 h-4 text-primary" /> +998 33 522 26 81
+                <Phone className="w-4 h-4 text-primary" /> +998 33 805 26 81
               </a>
               <a
                 href="https://t.me/chinora_academy"
